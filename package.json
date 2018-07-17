@@ -20,10 +20,12 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@feathersjs/socketio-client": "^1.1.0",
     "expo": "^27.0.1",
     "native-base": "2.6.0",
     "react": "16.3.1",
     "react-native": "~0.55.2",
+    "socket.io-client": "^2.1.1",
     "vue-native-core": "0.0.7",
     "vue-native-helper": "0.0.8",
     "vue-native-router": "0.0.1-alpha.3",

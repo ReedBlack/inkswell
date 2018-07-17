@@ -2,9 +2,9 @@
   <nb-container class="home">
     <!-- <status-bar :barStyle="'light-content'"></status-bar> -->
     
-    <Image :source="launchScreenBg" class="imageContainer" resizeMode="contain" :style="{marginLeft: -30, marginTop: 300, height:300}" />
-    <nb-h3 :style="{marginTop: -55, marginLeft: 40}" class="text-color-white">Linking tattoo artists and clients</nb-h3>
-      <nb-content class="margins" padder :style="{marginTop: -10}" >
+    <Image :source="launchScreenBg" class="imageContainer" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
+    <nb-text :style="{marginTop: -75, marginLeft: 71}" class="text-color-white">Linking tattoo artists and clients</nb-text>
+      <nb-content class="margins" padder :style="{marginTop: 10}" >
             <nb-form>
                 <nb-item floatingLabel>
                     <nb-label>Username</nb-label>
@@ -19,7 +19,7 @@
                 <nb-text :onPress="showDrawer">Sign In</nb-text>
             </nb-button>
        </nb-content>
-       <view :style="{ marginBottom: 40 }">
+       <view :style="{ marginBottom: 25 }">
         <nb-button :style="stylesObj.btnContainer">
           <nb-text id="text-color-navy" :onPress="navigateToSignupScreen">client signup</nb-text>
         </nb-button>
@@ -105,13 +105,13 @@ export default {
   background-color: transparent;
 }
 .text-color-white {
-  color: white;
+  color: #fffede;
 }
 #text-color-navy {
   color: #2f2f4f;
 }
 .button-container {
-  background-color: #fffae5;
+  background-color: #fffede;
   align-self: center;
 }
 </style>

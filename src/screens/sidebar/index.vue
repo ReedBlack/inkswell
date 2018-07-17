@@ -8,7 +8,7 @@
             <nb-icon
               active
               :name="data.icon"
-              :style="{ color: '#2f2f4f', fontSize: 26, width: 30 }"
+              :style="{ color: '#fffede', fontSize: 30, width: 30 }"
             />
             <nb-text class="list">
               {{data.name}}
@@ -23,7 +23,7 @@
 
 <script>
 import { Dimensions, Platform } from "react-native";
-import drawerCover from "../../../assets/largefish.png";
+import drawerCover from "../../../assets/bluefish.png";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -39,8 +39,8 @@ export default {
       stylesObj: {
         drawerCoverObj: {
           height: deviceHeight / 3.5,
-          backgroundColor: "#2f2f4f",
-          marginLeft: -10,
+          backgroundColor: "#fffede",
+          marginLeft: -65,
           paddingTop: 140
         },
         drawerImageObj: {
@@ -53,7 +53,7 @@ export default {
           fontSize: Platform.OS === "android" ? 11 : 13,
           marginTop: Platform.OS === "android" ? -3 : 0,
           fontWeight: "400",
-          color: "#2f2f4f"
+          color: "#fffede"
         }
       },
       datas: [
@@ -67,13 +67,13 @@ export default {
           name: "Matches",
           route: "Matches",
           icon: "albums",
-          bg: "#fffede"
+          bg: "#2f2f4f"
         },
         {
           name: "My Profile",
           route: "MyProfile",
           icon: "information-circle",
-          bg: "#fffede"
+          bg: "#2f2f4f"
         }
       ]
     };
@@ -89,7 +89,7 @@ export default {
 <style>
 .sidebar-content-wrapper {
   flex: 1;
-  background-color: #fffede;
+  background-color: #2f2f4f;
 }
 .drawer-cover {
   flex: 1;
@@ -114,7 +114,7 @@ export default {
   text-align: center;
 }
 .list {
-  color: #2f2f4f;
+  color: #fffede;
 }
 </style>
 

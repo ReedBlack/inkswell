@@ -15,6 +15,7 @@ import { store } from "../../store";
 
 import App from "../App.vue";
 
+Vue.prototype.$store = store;
 // registering all native-base components to the global scope of the Vue
 Vue.use(VueNativeBase);
 

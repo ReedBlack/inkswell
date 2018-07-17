@@ -14,11 +14,13 @@ import DeckSwiperScreen from "./screens/deckSwiper";
 import SignupScreen from "./screens/SignupScreen";
 import ArtistSignup from "./screens/ArtistSignup";
 import MyProfile from "./screens/MyProfile";
+import Matches from "./screens/Matches";
 
 const Drawer = DrawerNavigator(
   {
     Home: { screen: HomeScreen },
     NHDeckSwiper: { screen: DeckSwiperScreen },
+    Matches: { screen: Matches },
     MyProfile: { screen: MyProfile }
   },
   {
