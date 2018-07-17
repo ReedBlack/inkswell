@@ -15,11 +15,11 @@
           <nb-right />
         </nb-header>
         <view :style="{flex: 1, padding: 12}">
-            <nb-deck-swiper v-if="artistArr"
-                :dataSource="artistArr"
+            <nb-deck-swiper v-if="artists"
+                :dataSource="artists"
                 :looping="isLoopingRequired"
                 :renderEmpty="handleCardEmpty"
-               
+                :renderTop="returnTopCard"
                 :renderItem="handleCardRendering"
 
             />
@@ -41,21 +41,22 @@ import CardComponent from "./card";
 export default {
    computed: {
      artistArr: async function() {
-       await console.log(store.state.artists, "yo dawg");
+        console.log(store.state.artists, "yo dawg");
 
-       return await store.state.artists;
-     }
-   },
+       return store.state.artists.artists;
+      }
+    },
 
   data: function() {
     return {
-      isLoopingRequired: true,
-      artistTest: null
+      isLoopingRequired: false,
+      artists: null
     };
   },
   mounted: async function() {
     await store.dispatch("getArtistUsers");
-    // this.artistTest = store.state.artists.artists;
+    this.artists = store.state.artists.artists;
+    console.log(store.state.artists.artists)
      
   },
   methods: {
@@ -68,7 +69,10 @@ export default {
     },
     handleCardRendering: function(artist) {
       return <CardComponent artist={artist} />;
-    }
+    },
+     returnTopCard: function(artist) {
+        return <CardComponent artist={artist} />;
+     }
   }
 };
 </script>
