@@ -8,11 +8,15 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        artists: []
+        artists: [],
+        matches: []
     },
     getters: {
         artists(state) {
             return state.artists
+        },
+        matches(state) {
+            return state.matches
         }
     },
     actions: {
@@ -20,6 +24,11 @@ const store = new Vuex.Store({
 
             const artists = await API.getArtistUsers()
             context.commit("setArtistUsers", artists)
+        },
+        async getMatches(context) {
+
+            const matches = await API.getMatches()
+            context.commit("setMatches", matches)
         }
     },
     mutations: {
@@ -31,8 +40,19 @@ const store = new Vuex.Store({
             state.artists.push(artist)
         },
         removeArtist(state, artists) {
-            const index = state.artists.indexOf(artist)
+            let index = state.artists.indexOf(artist)
             state.artists.splice(index, 1)
+        },
+        setMatches(state, matches) {
+            state.matches = matches
+            // console.log(state.artists, "whatever the fuck")
+        },
+        addMatch(state, match) {
+            state.matches.push(match)
+        },
+        removeMatch(state, matches) {
+            let index = state.matches.indexOf(match)
+            state.matches.splice(index, 1)
         }
     }
 

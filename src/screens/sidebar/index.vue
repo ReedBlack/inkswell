@@ -1,14 +1,15 @@
 <template>
   <nb-container>
     <nb-content class="sidebar-content-wrapper"  :bounces="false">
-      <image :source="drawerCover" resizeMode="cover" class="drawer-cover" :style="stylesObj.drawerCoverObj"/>
+      <image :source="drawerCover" resizeMode="center" class="drawer-cover" :style="stylesObj.drawerCoverObj"/>
+      <image :source="Tatpic1" class="backgroundpic" />
       <nb-list>
         <nb-list-item v-for="data in datas" :key="data.route" button noBorder :onPress="() => handleListItemClick(data)">
           <nb-left>
             <nb-icon
               active
               :name="data.icon"
-              :style="{ color: '#fffede', fontSize: 30, width: 30 }"
+              :style="{ color: '#fffede', fontSize: 29, width: 30 }"
             />
             <nb-text class="list">
               {{data.name}}
@@ -23,7 +24,8 @@
 
 <script>
 import { Dimensions, Platform } from "react-native";
-import drawerCover from "../../../assets/bluefish.png";
+import drawerCover from "../../../assets/fishLogo.1.png";
+import Tatpic1 from "../../../assets/tattoopic1.jpg";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -36,12 +38,13 @@ export default {
   data: function() {
     return {
       drawerCover: drawerCover,
+      Tatpic1: Tatpic1,
       stylesObj: {
         drawerCoverObj: {
           height: deviceHeight / 3.5,
-          backgroundColor: "#fffede",
-          marginLeft: -65,
-          paddingTop: 140
+          
+          marginLeft: 120,
+          marginTop:75
         },
         drawerImageObj: {
           left: Platform.OS === "android" ? deviceWidth / 10 : deviceWidth / 9,
@@ -67,7 +70,7 @@ export default {
           name: "Matches",
           route: "Matches",
           icon: "albums",
-          bg: "#2f2f4f"
+          bg: "gray"
         },
         {
           name: "My Profile",
@@ -87,21 +90,19 @@ export default {
 </script>
 
 <style>
+.backgroundpic {
+  position:absolute;
+  z-index:-10
+}
 .sidebar-content-wrapper {
   flex: 1;
-  background-color: #2f2f4f;
+  background-color: #202020;
 }
 .drawer-cover {
-  flex: 1;
-  align-self: stretch;
+
+ 
   position: relative;
   margin-bottom: 10;
-}
-.drawer-image {
-  align-self: center;
-  position: absolute;
-  height: 75;
-  width: 210;
 }
 .list-item-badge-container {
   border-radius: 3;

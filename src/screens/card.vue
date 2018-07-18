@@ -1,5 +1,6 @@
 <template>
   <nb-card :style="{ elevation: 3 }">
+  
    
           <nb-cardItem>
             <nb-left>
@@ -18,7 +19,7 @@
                 height: 300
               }"
     
-              :source="{uri: artist.pic_one}"
+              :source="{uri: artist.pic_two}"
             />
           </nb-cardItem>
          
@@ -28,8 +29,10 @@
 
 
 <script>
+
 import store from "../../store";
 export default {
+  
   props: {
     artist: {
       type: Object

@@ -16,18 +16,18 @@
         </nb-header>
         <nb-content padder>
             <nb-list>
-                <nb-list-item v-for="item in listItemArr" :key="item.text">
+                <nb-list-item v-for="match in matches" :key="match.id">
                    
                     <nb-body>
                         <nb-text>
-                            {{item.text}}
+                            {{match.id}}
                         </nb-text>
                         <nb-text :numberOfLines="1">
-                            {{item.note}}
+                            {{match.artist_id.artist}}
                         </nb-text>
                     </nb-body>
                     <nb-right>
-                        <nb-text note> {{item.time}} </nb-text>
+                        <nb-text note> {{match.client_id}} </nb-text>
                     </nb-right>
                 </nb-list-item>
             </nb-list>
@@ -37,42 +37,18 @@
 
 
 <script>
+import store from "../../store";
 export default {
   data: function() {
     return {
-      listItemArr: [
-        {
-          text: "Kumar Pratik",
-          note: "Its time to build a difference . .",
-          time: "3:43 pm"
-        },
-        {
-          text: "Kumar Sanket",
-          note: "One needs courage to be happy and smiling all time . . ",
-          time: "1:12 pm"
-        },
-        {
-          text: "Megha",
-          note: "Live a life style that matchs your vision",
-          time: "10:03 am"
-        },
-        {
-          text: "Atul Ranjan",
-          note: "Failure is temporary, giving up makes it permanent",
-          time: "5:47 am"
-        },
-        {
-          text: "Saurabh Sahu",
-          note: "The biggest risk is a missed opportunity !!",
-          time: "11:11 pm"
-        },
-        {
-          text: "Varun Sahu",
-          note: "Wish I had a Time machine . .",
-          time: "8:54 pm"
-        }
-      ]
+      matches: []
     };
-  }
+  },
+  mounted: async function() {
+    await store.dispatch("getMatches");
+    this.matches = store.state.matches.myMatches;
+    console.log(store.state.matches)
+     
+  },
 };
 </script>

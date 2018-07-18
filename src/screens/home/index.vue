@@ -2,20 +2,21 @@
   <nb-container class="home">
     <!-- <status-bar :barStyle="'light-content'"></status-bar> -->
     
-    <Image :source="launchScreenBg" class="imageContainer" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
+    <Image :source="launchScreenLogo" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
+    <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:15}" />
     <nb-text :style="{marginTop: -75, marginLeft: 71}" class="text-color-white">Linking tattoo artists and clients</nb-text>
       <nb-content class="margins" padder :style="{marginTop: 10}" >
             <nb-form>
-                <nb-item floatingLabel>
-                    <nb-label>Username</nb-label>
+                <nb-item fixedLabel>
+                    <nb-label class="text-color-white">Username</nb-label>
                     <nb-input />
                 </nb-item>
-                <nb-item floatingLabel last>
-                    <nb-label>Password</nb-label>
+                <nb-item fixedLabel last>
+                    <nb-label class="text-color-white">Password</nb-label>
                     <nb-input secureTextEntry />
                 </nb-item>
             </nb-form>
-            <nb-button block :style="{ margin: 15, height: 45 }">
+            <nb-button block :style="stylesObj.btnContainer">
                 <nb-text :onPress="showDrawer">Sign In</nb-text>
             </nb-button>
        </nb-content>
@@ -33,7 +34,8 @@
 
 <script>
 import { Dimensions, Platform } from "react-native";
-import launchScreenBg from "../../../assets/logoLarge.png";
+import launchScreenLogo from "../../../assets/logoLarge.png";
+import launchScreenBg from "../../../assets/tattoolittle.jpg";
 
 export default {
   props: {
@@ -44,6 +46,7 @@ export default {
   data: function() {
     return {
       launchScreenBg: launchScreenBg,
+      launchScreenLogo: launchScreenLogo,
       stylesObj: {
         logoContainerStyle: {
           marginTop: Dimensions.get("window").height / 8
@@ -53,8 +56,10 @@ export default {
           top: Platform.OS === "android" ? 35 : 60
         },
         btnContainer: {
-          backgroundColor: "#2f2f4f",
-          alignSelf: "center"
+          backgroundColor: "black",
+          opacity: .5,
+          alignSelf: "center",
+          margin: 3
         }
       },
       datas: [
@@ -85,8 +90,11 @@ export default {
 
  
 <style>
+.imageContainer {
+  position:absolute;
+  z-index:-10
+}
 .home {
-  background-color: #2f2f4f;
   margin-top: -250px;
 }
 

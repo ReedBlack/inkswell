@@ -19,7 +19,7 @@
                 :dataSource="artists"
                 :looping="isLoopingRequired"
                 :renderEmpty="handleCardEmpty"
-                :renderTop="returnTopCard"
+
                 :renderItem="handleCardRendering"
 
             />
@@ -39,13 +39,13 @@ import Vuex from "vuex";
 import CardComponent from "./card";
 
 export default {
-   computed: {
-     artistArr: async function() {
-        console.log(store.state.artists, "yo dawg");
+  //  computed: {
+  //    artistArr: async function() {
+  //       console.log(store.state.artists, "yo dawg");
 
-       return store.state.artists.artists;
-      }
-    },
+  //      return store.state.artists.artists;
+  //     }
+  //   },
 
   data: function() {
     return {
@@ -69,10 +69,7 @@ export default {
     },
     handleCardRendering: function(artist) {
       return <CardComponent artist={artist} />;
-    },
-     returnTopCard: function(artist) {
-        return <CardComponent artist={artist} />;
-     }
+    }
   }
 };
 </script>
