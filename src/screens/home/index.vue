@@ -3,7 +3,7 @@
     <!-- <status-bar :barStyle="'light-content'"></status-bar> -->
     
     <Image :source="launchScreenLogo" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
-    <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:15}" />
+    <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:250}" />
     <nb-text :style="{marginTop: -75, marginLeft: 71}" class="text-color-white">Linking tattoo artists and clients</nb-text>
       <nb-content class="margins" padder :style="{marginTop: 10}" >
             <nb-form>

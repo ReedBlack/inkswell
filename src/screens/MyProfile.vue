@@ -1,6 +1,6 @@
 <template>
   <nb-container :style="{backgroundColor: '#fff'}">
-        <nb-header>
+        <nb-header :style="{height: 50}">
           <nb-left>
             <nb-button
               transparent

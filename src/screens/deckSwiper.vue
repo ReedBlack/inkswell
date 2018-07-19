@@ -1,6 +1,6 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header>
+        <nb-header :style="{height: 50}">
           <nb-left>
             <nb-button
               transparent
@@ -14,7 +14,7 @@
           </nb-body>
           <nb-right />
         </nb-header>
-        <view :style="{flex: 1, padding: 12}">
+        <View :style="{flex: 1, padding: 12}">
             <nb-deck-swiper v-if="artists"
                 :dataSource="artists"
                 :looping="isLoopingRequired"
@@ -25,13 +25,13 @@
             />
            
           
-        </view>
+        </View>
   </nb-container>
 </template>
 
 <script>
 import React from "react";
-import { View, Text } from "react-native";
+import { Animated, View, Text } from "react-native";
 import store from "../../store";
 import API from "../../lib/API";
 import Vuex from "vuex";
