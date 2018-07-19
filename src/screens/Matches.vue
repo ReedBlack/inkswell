@@ -51,10 +51,12 @@ export default {
     };
   },
   methods: {
-    handleListTap(match) {
+    handleListTap: async function(match) {
+      console.log(match.name);
       this.navigation.navigate("Profile", {
         imageLink: match.imageLink,
         picOne: match.picOne,
+
         picTwo: match.picTwo,
         picTree: match.picThree,
         // shop: match.shop,
