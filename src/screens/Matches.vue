@@ -18,17 +18,17 @@
             <nb-list>
                 <nb-list-item v-for="(match, index) in matches" :key="index">
                    <touchable-opacity class="flex-container" :on-press="() => handleListTap(match)" :style="{flex:1}">
-                    <nb-body>
-                        <nb-text>
-                            {{match.name}}
-                        </nb-text>
-                        <nb-text :numberOfLines="1">
-                            {{match.email}}
-                        </nb-text>
-                    </nb-body>
-                   <nb-right>
-                        <nb-thumbnail large :source="{uri: match.imageLink}" />
-                    </nb-right>
+                      <nb-body>
+                          <nb-text>
+                              {{match.artistName}}
+                          </nb-text>
+                          <nb-text small :numberOfLines="1">
+                              {{match.artistEmail}}
+                          </nb-text>
+                      </nb-body>
+                      <nb-right>
+                          <nb-thumbnail large :source="{uri: match.artistImageLink}" />
+                      </nb-right>
                     </touchable-opacity>
                 </nb-list-item>
             </nb-list>
@@ -52,16 +52,16 @@ export default {
   },
   methods: {
     handleListTap: async function(match) {
-      console.log(match.name);
+      console.log(match.artistName);
       this.navigation.navigate("Profile", {
-        imageLink: match.imageLink,
+        imageLink: match.artistImageLink,
         picOne: match.picOne,
 
         picTwo: match.picTwo,
-        picTree: match.picThree,
-        // shop: match.shop,
-        name: match.name,
-        email: match.email
+        picThree: match.picThree,
+        shop: match.shop,
+        name: match.artist_name,
+        email: match.artist_email
       });
     }
   },

@@ -42,9 +42,9 @@ export default {
       stylesObj: {
         drawerCoverObj: {
           height: deviceHeight / 3.5,
-          
+
           marginLeft: 120,
-          marginTop:75
+          marginTop: 75
         },
         drawerImageObj: {
           left: Platform.OS === "android" ? deviceWidth / 10 : deviceWidth / 9,
@@ -77,6 +77,12 @@ export default {
           route: "MyProfile",
           icon: "information-circle",
           bg: "#2f2f4f"
+        },
+        {
+          name: "Edit Profile",
+          route: "MyProfile",
+          icon: "information-circle",
+          bg: "#2f2f4f"
         }
       ]
     };
@@ -91,16 +97,14 @@ export default {
 
 <style>
 .backgroundpic {
-  position:absolute;
-  z-index:-10
+  position: absolute;
+  z-index: -10;
 }
 .sidebar-content-wrapper {
   flex: 1;
   background-color: #202020;
 }
 .drawer-cover {
-
- 
   position: relative;
   margin-bottom: 10;
 }

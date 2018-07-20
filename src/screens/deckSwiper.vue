@@ -56,8 +56,7 @@ export default {
   mounted: async function() {
     await store.dispatch("getArtistUsers");
     this.artists = store.state.artists.artists;
-    console.log(store.state.artists.artists)
-     
+    console.log(store.state.artists.artists);
   },
   methods: {
     handleCardEmpty: function() {
@@ -68,7 +67,11 @@ export default {
       );
     },
     handleCardRendering: function(artist) {
-      return <CardComponent artist={artist} />;
+      return (
+        <Animated.View>
+          <CardComponent artist={artist} />
+        </Animated.View>
+      );
     }
   }
 };

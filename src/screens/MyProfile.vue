@@ -16,6 +16,7 @@
         </nb-header>
 
         <nb-content padder>
+           <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
             <nb-card>
                 <nb-card-item bordered>
                     <nb-left>
@@ -43,13 +44,14 @@
 
 <script>
 import { Dimensions } from "react-native";
-
+import launchScreenBg from "../../assets/tattoolittle.jpg";
 import cardImage from "../../assets/me.jpg";
 
 const deviceWidth = Dimensions.get("window").width;
 export default {
   data: function() {
     return {
+      launchScreenBg: launchScreenBg,
       cardImage,
       stylesObj: {
         cardItemImage: {
@@ -71,5 +73,9 @@ export default {
 .card-item-image {
   align-self: center;
   height: 250;
+}
+.imageContainer {
+  position: absolute;
+  z-index: -10;
 }
 </style>

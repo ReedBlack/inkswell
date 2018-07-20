@@ -5,7 +5,7 @@
           <nb-cardItem>
             <nb-left>
               <nb-body>
-                <nb-text>{{artist.name}}</nb-text>
+                <nb-text>{{artist.artist_name}}</nb-text>
                   <nb-text note>{{artist.shop}}</nb-text> 
               </nb-body>
             </nb-left>
@@ -29,10 +29,8 @@
 
 
 <script>
-
 import store from "../../store";
 export default {
-  
   props: {
     artist: {
       type: Object
