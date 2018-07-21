@@ -1,6 +1,6 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header :style="{height: 50}">
+        <nb-header class="gray" :style="{height: 60}">
           <nb-left>
             <nb-button
               transparent
@@ -16,6 +16,7 @@
         </nb-header>
         <View :style="{flex: 1, padding: 12}">
             <nb-deck-swiper v-if="artists"
+     
                 :dataSource="artists"
                 :looping="isLoopingRequired"
                 :renderEmpty="handleCardEmpty"
@@ -69,3 +70,8 @@ export default {
 };
 </script>
 
+<style>
+.gray {
+  background-color: gray;
+}
+</style>

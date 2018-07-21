@@ -1,34 +1,34 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-     <nb-header :style="{height: 70}">
+     <nb-header class="gray" :style="{height: 70}">
           <nb-left>
             <nb-button
               transparent
               :onPress="() => this.props.navigation.navigate('Matches')"
             >
-              <nb-icon name="arrow-back" />
+              <nb-icon class="cream" name="arrow-back" />
             </nb-button>
           </nb-left>
           <nb-body>
-            <nb-title>Profile</nb-title>
+           <Image class="front" :source="headerIcon"  />
           </nb-body>
           <nb-right>
             <nb-button
               transparent
               :onPress="() => handleChatTap()"
             >
-              <nb-icon name="arrow-forward" />
+              <nb-icon class="cream" name="arrow-forward" />
 
             </nb-button>
            
           </nb-right>
      </nb-header>
         <scroll-view :style="{width: '100%'}">
-           <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:250}" />
+          
     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
-    <View >
-      <Text>{{navigation.getParam('artistName')}}</Text>
-      <text small>{{navigation.getParam("shop")}}</text>
+    <View class="shade">
+      <nb-h1 class="cream pads">{{navigation.getParam('artistName')}}</nb-h1>
+      <text class="cream pads more">{{navigation.getParam("shop")}}</text>
     </View>
       <Carousel 
       
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import headerIcon from "../../assets/small-sideways.png";
 import React from "react";
 import launchScreenBg from "../../assets/tattoolittle.jpg";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
@@ -57,6 +58,7 @@ export default {
   data() {
     return {
       launchScreenBg: launchScreenBg,
+      headerIcon: headerIcon,
       images: [
         { uri: this.navigation.getParam("picOne") },
         { uri: this.navigation.getParam("picTwo") },
@@ -85,7 +87,7 @@ export default {
           <Image
             source={{ uri: item.uri }}
             style={{
-              marginTop: 325,
+              marginTop: 225,
               marginRight: 20,
               width: 300,
               height: 300
@@ -102,12 +104,32 @@ export default {
 </script>
 
 <style>
-.imageContainer {
+.more {
+  margin-left: 140;
+}
+.pads {
+  margin-left: 50;
+}
+.shade {
+  background-color: rgba(169, 169, 169, 0.5);
+  transform: rotate(-11deg);
   position: absolute;
-  z-index: -10;
+  margin-top: 30;
+  margin-left: -40;
+  width: 160%;
+}
+.front {
+  z-index: 1000;
+}
+.cream {
+  color: #fffede;
+}
+.gray {
+  background-color: gray;
+  z-index: 10;
 }
 .imageContainer {
   position: absolute;
-  z-index: -11;
+  z-index: -100;
 }
 </style>

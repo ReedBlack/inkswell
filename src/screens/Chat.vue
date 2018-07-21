@@ -1,7 +1,7 @@
 <template>
 <nb-container :style="{ backgroundColor: '#fff' }">
 
-    <nb-header :style="{height: 50}">
+    <nb-header class="gray" :style="{height: 50}">
           <nb-left>
             <nb-button
               transparent
@@ -13,7 +13,7 @@
          
           
         </nb-header>
-         <nb-header :style="{ height: 70}">
+         <nb-header class="gray" :style="{ height: 70}">
          
           <nb-left>
              <nb-thumbnail medium :source="{uri: navigation.getParam('clientImageLink')}" />
@@ -41,16 +41,16 @@
             </nb-right>    
          </view> 
         </nb-content>
-    <nb-footer>
+    
          <nb-content padder>
             <nb-form left :style="{height:180}">
-                <nb-item rounded>
-                    <nb-input :onChangeText="submitComment" v-model="comment.chatClient" placeholder="say sumpin" />
+                <nb-item left rounded>
+                    <nb-input :onChangeText="submitComment" v-model="comment.chatClient" type="text" placeholder="say sumpin" />
                 </nb-item>
+           <nb-button right :onPress="submitComment">Send</nb-button>
             </nb-form>
        </nb-content>
-           <nb-button right :onPress="submitComment">Send</nb-button>
-    </nb-footer>
+  
     </nb-container>
 </template>
 
@@ -59,7 +59,7 @@ import React from "react";
 import ScrollView from "react-native";
 import store from "../../store";
 import chatImage from "../../assets/wallpaperbg.jpg";
-import API from "../../lib/API";
+// import API from "../../lib/API";
 
 export default {
   props: {
@@ -69,11 +69,15 @@ export default {
   },
   data: function() {
     return {
-      API: API,
+      CHAT_API_URL: "https://inkswell.herokuapp.com/matches/1/chat",
       chatImage: chatImage,
       chat: [],
       comment: {
-        chatClient: ""
+        matchId: 1,
+        chatClient: "",
+        chatArtist: null,
+        clientId: 5,
+        artistID: 3
       }
     };
   },
@@ -83,26 +87,36 @@ export default {
   },
   methods: {
     submitComment: function() {
-      this.postComment();
+      this.postComment(this.comment);
       this.comment = {
-        chatClient: ""
+        matchId: 1,
+        chatClient: "",
+        chatArtist: null,
+        clientId: 5,
+        artistID: 3
       };
     },
-    postComment: async function() {
-      const postComment = {
+    postComment() {
+      return fetch(this.CHAT_API_URL, {
+        headers: new Headers({ "Content-Type": "application/json" }),
         method: "POST",
-        body: JSON.stringify(this.comment),
-        headers: { "Content-Type": "application/json" }
-      };
-      await fetch(this.API.CHAT_API_URL, postComment)
-        .then(res => res.json())
-        .then(resJSON => console.log(resJSON));
+        body: JSON.stringify(this.comment)
+      }).then(response => response.json());
+      this.comment.matchId = 1;
+      this.comment.chatClient = "";
+      this.comment.chatArtist = null;
+      this.comment.clientId = 5;
+      this.comment.artistId = 3;
+      console.log("im working");
     }
   }
 };
 </script>
 
 <style>
+.gray {
+  background-color: gray;
+}
 .clientComment {
   padding: 8;
   margin: 8;

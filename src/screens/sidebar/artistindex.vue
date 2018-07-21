@@ -1,0 +1,127 @@
+<template>
+  <nb-container>
+    <nb-content class="sidebar-content-wrapper"  :bounces="false">
+      <image :source="drawerCover" resizeMode="center" class="drawer-cover" :style="stylesObj.drawerCoverObj"/>
+      <image :source="Tatpic1" class="backgroundpic" />
+      <nb-list>
+        <nb-list-item v-for="data in datas" :key="data.route" button noBorder :onPress="() => handleListItemClick(data)">
+          <nb-left>
+            <nb-icon
+              active
+              :name="data.icon"
+              :style="{ color: '#fffede', fontSize: 29, width: 30 }"
+            />
+            <nb-text class="list">
+              {{data.name}}
+            </nb-text>
+          </nb-left>
+        
+        </nb-list-item>
+      </nb-list>
+    </nb-content>
+  </nb-container>
+</template>
+
+<script>
+import { Dimensions, Platform } from "react-native";
+import drawerCover from "../../../assets/fishLogo.1.png";
+import Tatpic1 from "../../../assets/tattoo2.jpg";
+
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
+export default {
+  props: {
+    navigation: {
+      type: Object
+    }
+  },
+  data: function() {
+    return {
+      drawerCover: drawerCover,
+      Tatpic1: Tatpic1,
+      stylesObj: {
+        drawerCoverObj: {
+          height: deviceHeight / 3.5,
+
+          marginLeft: 120,
+          marginTop: 75
+        },
+        drawerImageObj: {
+          left: Platform.OS === "android" ? deviceWidth / 10 : deviceWidth / 9,
+          top:
+            Platform.OS === "android" ? deviceHeight / 13 : deviceHeight / 12,
+          resizeMode: "cover"
+        },
+        badgeText: {
+          fontSize: Platform.OS === "android" ? 11 : 13,
+          marginTop: Platform.OS === "android" ? -3 : 0,
+          fontWeight: "400",
+          color: "#fffede"
+        }
+      },
+      datas: [
+        {
+          name: "Swipe",
+          route: "NHDeckSwiper",
+          icon: "swap",
+          bg: "#fffede"
+        },
+        {
+          name: "Matches",
+          route: "Matches",
+          icon: "albums",
+          bg: "gray"
+        },
+        {
+          name: "My Profile",
+          route: "MyProfile",
+          icon: "information-circle",
+          bg: "#2f2f4f"
+        }
+        // {
+        //   name: "Edit Profile",
+        //   route: "MyProfile",
+        //   icon: "information-circle",
+        //   bg: "#2f2f4f"
+        // }
+      ]
+    };
+  },
+  methods: {
+    handleListItemClick: function(dataObj) {
+      this.navigation.navigate(dataObj.route);
+    }
+  }
+};
+</script>
+
+<style>
+.backgroundpic {
+  position: absolute;
+  z-index: -10;
+}
+.sidebar-content-wrapper {
+  flex: 1;
+  background-color: #202020;
+}
+.drawer-cover {
+  position: relative;
+  margin-bottom: 10;
+}
+.list-item-badge-container {
+  border-radius: 3;
+  height: 25;
+  width: 72;
+}
+.list-item-badge-text {
+  /* font-weight: 400; // not-working  */
+  /* font-weight: bold; // working */
+  text-align: center;
+}
+.list {
+  color: #fffede;
+}
+</style>
+
+
+

@@ -21,10 +21,13 @@
                     <nb-input placeholder="Name" />
                 </nb-item>
                 <nb-item regular>
-                    <nb-input placeholder="Age" />
+                    <nb-input placeholder="Email" />
                 </nb-item>
                 <nb-item regular>
-                    <nb-input placeholder="Desired Tattoo Location" />
+                    <nb-input placeholder="Password" />
+                </nb-item>
+                <nb-item regular>
+                    <nb-input placeholder="Placement" />
                 </nb-item>
                 <nb-item regular>
                     <nb-input placeholder="Desired Tattoo Size" />
@@ -35,6 +38,10 @@
                   <nb-content padder>
             <nb-textarea :rowSpan="8" bordered placeholder="Idea Description" />
        </nb-content>
+
+           <nb-button primary :onPress="getPhotos" :style="{marginBottom: 20}">
+                <nb-text>Get Photo</nb-text>
+            </nb-button>
            <nb-button primary :style="{marginBottom: 20}">
                 <nb-text>Submit</nb-text>
             </nb-button>
@@ -42,3 +49,24 @@
          </nb-content>
       </nb-container>
 </template>
+
+<script>
+import { CameraRoll, RCTCameraRoll } from "react-native";
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    getPhotos: function() {
+      console.log("hio");
+      CameraRoll.getPhotos({
+        first: 20,
+        assetType: "Photos"
+      });
+    }
+  }
+};
+</script>
+
+<style>
+</style>

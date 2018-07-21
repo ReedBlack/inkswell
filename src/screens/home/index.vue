@@ -1,6 +1,6 @@
 <template>
   <nb-container class="home">
-    <!-- <status-bar :barStyle="'light-content'"></status-bar> -->
+   
     
     <Image :source="launchScreenLogo" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
     <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:250}" />
@@ -17,7 +17,10 @@
                 </nb-item>
             </nb-form>
             <nb-button block :style="stylesObj.btnContainer">
-                <nb-text :onPress="showDrawer">Sign In</nb-text>
+                <nb-text :onPress="showDrawer">Artist Sign In</nb-text>
+            </nb-button>
+            <nb-button block :style="stylesObj.btnContainer">
+                <nb-text :onPress="showDrawer">Client Sign In</nb-text>
             </nb-button>
        </nb-content>
        <view :style="{ marginBottom: 25 }">
@@ -57,7 +60,7 @@ export default {
         },
         btnContainer: {
           backgroundColor: "black",
-          opacity: .5,
+          opacity: 0.5,
           alignSelf: "center",
           margin: 3
         }
@@ -91,8 +94,8 @@ export default {
  
 <style>
 .imageContainer {
-  position:absolute;
-  z-index:-10
+  position: absolute;
+  z-index: -10;
 }
 .home {
   margin-top: -250px;

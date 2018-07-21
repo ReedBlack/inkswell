@@ -1,32 +1,33 @@
 <template>
     <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header :style="{height: 60}">
+        <nb-header class="gray" :style="{height: 70}">
           <nb-left>
             <nb-button
               transparent
               :onPress="() => this.props.navigation.navigate('DrawerOpen')"
             >
-              <nb-icon name="arrow-back" />
+              <nb-icon class="cream" name="arrow-back" />
             </nb-button>
           </nb-left>
           <nb-body>
-            <nb-title>My Matches</nb-title>
+            <Image :source="headerIcon"  />
           </nb-body>
           <nb-right />
         </nb-header>
+         <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
         <nb-content padder>
             <nb-list>
                 <nb-list-item v-for="(match, index) in matches" :key="index">
-                   <touchable-opacity class="flex-container" :on-press="() => handleListTap(match)" :style="{flex:1}">
-                      <nb-body>
-                          <nb-text>
+                   <touchable-opacity class="flex-container" :on-press="() => handleListTap(match)" :style="{flex:1, flexDirection:'row'}">
+                      <nb-body :style="{alignSelf: 'flex-start'}">
+                          <nb-h2 class="cream">
                               {{match.artistName}}
-                          </nb-text>
-                          <nb-text small :numberOfLines="1">
+                          </nb-h2>
+                          <nb-text note class="cream">
                               {{match.artistEmail}}
                           </nb-text>
                       </nb-body>
-                      <nb-right>
+                      <nb-right :style="{alignSelf: 'flex-end'}">
                           <nb-thumbnail large :source="{uri: match.artistImageLink}" />
                       </nb-right>
                     </touchable-opacity>
@@ -39,6 +40,8 @@
 
 <script>
 import store from "../../store";
+import headerIcon from "../../assets/small-sideways.png";
+import launchScreenBg from "../../assets/wallpaperbg.jpg";
 export default {
   props: {
     navigation: {
@@ -47,6 +50,8 @@ export default {
   },
   data: function() {
     return {
+      headerIcon: headerIcon,
+      launchScreenBg: launchScreenBg,
       matches: []
     };
   },
@@ -60,7 +65,7 @@ export default {
         picTwo: match.picTwo,
         picThree: match.picThree,
         shop: match.shop,
-        artistName: match.artist_name,
+        artistName: match.artistName,
         email: match.artist_email
       });
     }
@@ -71,3 +76,17 @@ export default {
   }
 };
 </script>
+
+<style>
+.imageContainer {
+  position: absolute;
+  z-index: -10;
+}
+
+.gray {
+  background-color: gray;
+}
+.cream {
+  color: #fffede;
+}
+</style>
