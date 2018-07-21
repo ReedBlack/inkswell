@@ -12,7 +12,8 @@ const store = new Vuex.Store({
 
         artists: [],
         matches: [],
-        chats: []
+        chats: [],
+        clients: []
     },
     getters: {
         artists(state) {
@@ -23,6 +24,9 @@ const store = new Vuex.Store({
         },
         matches(state) {
             return state.chats
+        },
+        clients(state) {
+            return state.clients
         }
     },
     actions: {
@@ -30,6 +34,11 @@ const store = new Vuex.Store({
 
             const artists = await API.getArtistUsers()
             context.commit("setArtistUsers", artists)
+        },
+        async getClientUsers(context) {
+
+            const clients = await API.getClientUsers()
+            context.commit("setClientUsers", clients)
         },
         async getMatches(context) {
 
@@ -45,6 +54,9 @@ const store = new Vuex.Store({
     mutations: {
         setArtistUsers(state, artists) {
             state.artists = artists
+        },
+        setClientUsers(state, clients) {
+            state.clients = clients
         },
         addArtist(state, artist) {
             state.artists.push(artist)

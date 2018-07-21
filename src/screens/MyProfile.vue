@@ -1,81 +1,84 @@
 <template>
-  <nb-container :style="{backgroundColor: '#fff'}">
-        <nb-header :style="{height: 50}">
+  <nb-container :style="{ backgroundColor: '#fff' }">
+     <nb-header class="gray" :style="{height: 70}">
           <nb-left>
             <nb-button
               transparent
-              :onPress="() => this.props.navigation.navigate('DrawerOpen')"
+              :onPress="() => this.props.navigation.navigate('Matches')"
             >
-              <nb-icon name="arrow-back" />
+              <nb-icon class="cream" name="arrow-back" />
             </nb-button>
           </nb-left>
           <nb-body>
-            <nb-title>Home</nb-title>
+           <Image class="front" :source="headerIcon"  />
           </nb-body>
-          <nb-right />
-        </nb-header>
-
-        <nb-content padder>
-           <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
-            <nb-card>
-                <nb-card-item bordered>
-                    <nb-left>
-                        <nb-body>
-                            <nb-text>Reed Black</nb-text>
-                            <nb-text note>Budget: ${{budget}}/hr</nb-text>
-                        </nb-body>
-                    </nb-left>
-                </nb-card-item> 
-
-                <nb-card-item>
-                    <nb-body>
-                        <image :source="cardImage" class="card-item-image" :style="stylesObj.cardItemImage"/>
-                        <nb-text note>size: grapefruit</nb-text>
-                        <nb-text note>placement: tramp stamp</nb-text>
-                        <nb-text>I'm looking for a butterfly right above my ass.</nb-text>
-                    </nb-body>
-                </nb-card-item>
-                
-               
-            </nb-card>
-        </nb-content>
-      </nb-container>
+       
+     </nb-header>
+        
+          
+    <Image :style="{flex:1, width: 400, height: 775}" :source="{uri: clients.client_image_link}" class="imageContainer" />
+    <View class="shade">
+      <nb-h1 class="cream pads">{{clients.client_name}}</nb-h1>
+      <text class="cream pads more">budget:{{clients.budget}}</text>
+    </View>
+     
+ 
+  </nb-container>
 </template>
 
 <script>
-import { Dimensions } from "react-native";
-import launchScreenBg from "../../assets/tattoolittle.jpg";
-import cardImage from "../../assets/me.jpg";
-
-const deviceWidth = Dimensions.get("window").width;
+import headerIcon from "../../assets/small-sideways.png";
+import React from "react";
+import store from "../../store";
+import { Animated, ScrollView, Image, View, Text } from "react-native";
+import Carousel from "react-native-snap-carousel";
 export default {
-  data: function() {
+  data() {
     return {
-      launchScreenBg: launchScreenBg,
-      cardImage,
-      stylesObj: {
-        cardItemImage: {
-          resizeMode: "cover",
-          width: deviceWidth / 1.18
-        }
-      },
-      budget: 125
+      headerIcon: headerIcon,
+      getNick: "https://inkswell.herokuapp.com/clientusers/5/",
+      clients: {}
     };
+  },
+  props: {
+    navigation: {
+      type: Object
+    }
+  },
+  mounted: async function() {
+    await store.dispatch("getClientUsers");
+    this.clients = store.state.clients.clients[4];
   }
 };
 </script>
 
-
 <style>
-.mb-15 {
-  margin-bottom: 15;
+.more {
+  margin-left: 100;
 }
-.card-item-image {
-  align-self: center;
-  height: 250;
+.pads {
+  margin-left: 50;
+}
+.shade {
+  background-color: rgba(169, 169, 169, 0.5);
+  transform: rotate(-11deg);
+  position: absolute;
+  margin-top: 80;
+  margin-left: -40;
+  width: 160%;
+}
+.front {
+  z-index: 1000;
+}
+.cream {
+  color: #fffede;
+}
+.gray {
+  background-color: gray;
+  z-index: 10;
 }
 .imageContainer {
   position: absolute;
-  z-index: -10;
+  z-index: -100;
 }
 </style>

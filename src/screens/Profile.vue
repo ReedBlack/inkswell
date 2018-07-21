@@ -23,7 +23,7 @@
            
           </nb-right>
      </nb-header>
-        <scroll-view :style="{width: '100%'}">
+       
           
     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
     <View class="shade">
@@ -44,20 +44,19 @@
       :inactiveSlideOpacity="0.4"
     />
   
-   </scroll-view>
+
   </nb-container>
 </template>
 
 <script>
 import headerIcon from "../../assets/small-sideways.png";
 import React from "react";
-import launchScreenBg from "../../assets/tattoolittle.jpg";
+
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
 export default {
   data() {
     return {
-      launchScreenBg: launchScreenBg,
       headerIcon: headerIcon,
       images: [
         { uri: this.navigation.getParam("picOne") },
@@ -87,7 +86,7 @@ export default {
           <Image
             source={{ uri: item.uri }}
             style={{
-              marginTop: 225,
+              marginTop: 275,
               marginRight: 20,
               width: 300,
               height: 300
@@ -114,7 +113,7 @@ export default {
   background-color: rgba(169, 169, 169, 0.5);
   transform: rotate(-11deg);
   position: absolute;
-  margin-top: 30;
+  margin-top: 80;
   margin-left: -40;
   width: 160%;
 }
