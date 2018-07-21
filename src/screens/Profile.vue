@@ -87,7 +87,7 @@ export default {
             source={{ uri: item.uri }}
             style={{
               marginTop: 275,
-              marginRight: 20,
+              marginRight: 10,
               width: 300,
               height: 300
             }}
@@ -110,7 +110,7 @@ export default {
   margin-left: 50;
 }
 .shade {
-  background-color: rgba(169, 169, 169, 0.5);
+  background-color: rgba(34, 34, 34, 0.5);
   transform: rotate(-11deg);
   position: absolute;
   margin-top: 80;

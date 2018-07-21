@@ -6,72 +6,137 @@
               transparent
               :onPress="() => this.props.navigation.navigate('DrawerOpen')"
             >
-              <nb-icon name="arrow-back" />
+              <nb-icon class="cream" name="arrow-back" />
             </nb-button>
           </nb-left>
           <nb-body>
-            <nb-title>Back</nb-title>
+            <Image :source="headerIcon"  />
           </nb-body>
           <nb-right />
         </nb-header>
-        <View :style="{flex: 1, padding: 12}">
-            <nb-deck-swiper v-if="artists"
+        <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
+            <Carousel v-if="artists"
      
-                :dataSource="artists"
-                :looping="isLoopingRequired"
-                :renderEmpty="handleCardEmpty"
+                :data="artists"
+                :renderItem="_renderItem"
+                
+                :windowSize="400"
+                 :itemWidth="350"
+                :itemHeight="350"
+                :sliderHeight="550"
+               :sliderWidth="400"
+               :inactiveSlideScale="0.6"
+               :inactiveSlideOpacity="0.4"
 
-                :renderItem="handleCardRendering"
 
             />
            
           
-        </View>
+     
   </nb-container>
 </template>
 
 <script>
+import launchScreenBg from "../../assets/wallpaperbg.jpg";
+import headerIcon from "../../assets/small-sideways.png";
 import React from "react";
-import { Animated, View, Text } from "react-native";
+import { Animated, Image, View, Text } from "react-native";
 import store from "../../store";
 import API from "../../lib/API";
 import Vuex from "vuex";
-
-import CardComponent from "./card";
+import Carousel from "react-native-snap-carousel";
+// import CardComponent from "./card";
 
 export default {
+  components: {
+    Carousel
+  },
   data: function() {
     return {
-      isLoopingRequired: false,
+      headerIcon: headerIcon,
+      launchScreenBg: launchScreenBg,
       artists: null
     };
   },
   mounted: async function() {
     await store.dispatch("getArtistUsers");
     this.artists = store.state.artists.artists;
-    console.log(store.state.artists.artists);
+    console.log(this.artists);
   },
   methods: {
-    handleCardEmpty: function() {
+    _renderItem: function(item, index) {
+      console.log(item.item.artist_name);
       return (
         <View>
-          <Text>That's all the designs for now. Please check back later.</Text>
+          <View
+            style={{
+              backgroundColor: "rgba(169,169,169,.5)",
+              width: 345,
+              height: 455,
+              marginTop: 60,
+              marginLeft: -10,
+              borderRadius: 5
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: "rgba(169,169,169,.3)",
+                marginLeft: 16,
+                marginTop: 5
+              }}
+            >
+              <Text
+                style={{
+                  padding: 3,
+                  marginLeft: 5,
+                  color: "#fffede",
+                  fontSize: 30
+                }}
+              >
+                {item.item.artist_name}
+              </Text>
+            </View>
+            <Text
+              style={{
+                marginTop: 8,
+                alignSelf: "flex-end",
+                marginRight: 5,
+                color: "#fffede",
+                fontSize: 19
+              }}
+            >
+              {item.item.shop}
+            </Text>
+            <Image
+              source={{ uri: item.item.pic_two }}
+              style={{
+                marginTop: 10,
+                marginLeft: 20,
+                width: 300,
+                height: 300,
+                borderRadius: 4
+              }}
+            />
+          </View>
         </View>
       );
     },
-    handleCardRendering: function(artist) {
-      return (
-        <Animated.View>
-          <CardComponent artist={artist} />
-        </Animated.View>
-      );
+    c: function() {
+      this._carousel = c;
     }
   }
 };
 </script>
 
 <style>
+.imageContainer {
+  position: absolute;
+  z-index: -10;
+}
 .gray {
   background-color: gray;
+}
+.cream {
+  color: #fffede;
 }
 </style>

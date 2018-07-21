@@ -21,7 +21,10 @@
       <nb-h1 class="cream pads">{{clients.client_name}}</nb-h1>
       <text class="cream pads more">budget:{{clients.budget}}</text>
     </View>
-     
+    <View class="description">
+       <nb-h2 class="cream">{{clients.client_name}}'s idea:</nb-h2>
+       <Text class="cream" :style="{fontSize: 17}">{{clients.description}}</Text>
+    </View>
  
   </nb-container>
 </template>
@@ -60,12 +63,21 @@ export default {
   margin-left: 50;
 }
 .shade {
-  background-color: rgba(169, 169, 169, 0.5);
+  background-color: rgba(34, 34, 34, 0.5);
   transform: rotate(-11deg);
   position: absolute;
   margin-top: 80;
   margin-left: -40;
   width: 160%;
+}
+.description {
+  background-color: rgba(34, 34, 34, 0.5);
+  position: absolute;
+  margin-top: 475;
+  margin-left: 90;
+  width: 75%;
+  padding: 4;
+  border-radius: 4;
 }
 .front {
   z-index: 1000;

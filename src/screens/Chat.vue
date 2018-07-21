@@ -1,30 +1,32 @@
 <template>
 <nb-container :style="{ backgroundColor: '#fff' }">
 
-    <nb-header class="gray" :style="{height: 50}">
+    <nb-header class="gray" :style="{height: 60}">
           <nb-left>
             <nb-button
               transparent
               :onPress="() => this.props.navigation.navigate('Profile')"
             >
-              <nb-icon name="arrow-back" />
+              <nb-icon class="cream" name="arrow-back" />
             </nb-button>
           </nb-left>
-         
-          
-        </nb-header>
-         <nb-header class="gray" :style="{ height: 70}">
-         
-          <nb-left>
-             <nb-thumbnail medium :source="{uri: navigation.getParam('clientImageLink')}" />
-          </nb-left>
-          <nb-right>
-             <nb-thumbnail medium :source="{uri: navigation.getParam('artistImageLink')}" />
-          </nb-right>
+          <nb-body>
+            <Image :source="headerIcon"  />
+          </nb-body>
+          <nb-right />
         </nb-header>
         <Image :source="chatImage" resizeMode="cover" class="imageContainerChat" />
+         <View :style="{ height: 80}">
+         
+          <nb-left class="client thumb" :style="{alignSelf: 'flex-start', width:100}">
+             <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" />
+          </nb-left>
+          <nb-right class="artist thumb" :style="{alignSelf: 'flex-end', width:100}">
+             <nb-thumbnail large :source="{uri: navigation.getParam('artistImageLink')}" />
+          </nb-right>
+        </View>
         <nb-content>
-           <view :style="{flex:1}" v-for="(comment, index) in chat" :key="index">
+           <view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
             <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">   
         
                 <nb-text>
@@ -55,6 +57,7 @@
 </template>
 
 <script>
+import headerIcon from "../../assets/small-sideways.png";
 import React from "react";
 import ScrollView from "react-native";
 import store from "../../store";
@@ -69,6 +72,7 @@ export default {
   },
   data: function() {
     return {
+      headerIcon: headerIcon,
       CHAT_API_URL: "https://inkswell.herokuapp.com/matches/1/chat",
       chatImage: chatImage,
       chat: [],
@@ -114,6 +118,17 @@ export default {
 </script>
 
 <style>
+.thumb {
+  margin-bottom: 65;
+}
+.artist {
+  margin-top: -87;
+  margin-right: 15;
+}
+.client {
+  margin-top: -8;
+  margin-left: 15;
+}
 .gray {
   background-color: gray;
 }
@@ -132,5 +147,8 @@ export default {
 .imageContainerChat {
   position: absolute;
   z-index: -10;
+}
+.cream {
+  color: #fffede;
 }
 </style>
