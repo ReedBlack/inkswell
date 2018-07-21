@@ -12,27 +12,37 @@
           <nb-body>
             <nb-title>Profile</nb-title>
           </nb-body>
-        </nb-header>
+          <nb-right>
+            <nb-button
+              transparent
+              :onPress="() => handleChatTap()"
+            >
+              <nb-icon name="arrow-forward" />
+
+            </nb-button>
+           
+          </nb-right>
+     </nb-header>
         <scroll-view :style="{width: '100%'}">
            <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:250}" />
-    <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('imageLink')}" class="imageContainer" />
-    <View :style="{backgroundColor: 'black', opacity: .5 }">
-      <Text>{{navigation.getParam('name')}}</Text>
-       <text small>{{navigation.getParam("shop")}}</text>
+    <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
+    <View >
+      <Text>{{navigation.getParam('artistName')}}</Text>
+      <text small>{{navigation.getParam("shop")}}</text>
     </View>
-          <Carousel 
-          
-          :loop="true"
-          :data="images"
-          :renderItem="_renderItem"
-          :windowSize="400"
-          :itemWidth="350"
-          :itemHeight="350"
-          :sliderHeight="550"
-          :sliderWidth="400"
-          :inactiveSlideScale="0.6"
-          :inactiveSlideOpacity="0.4"
-        />
+      <Carousel 
+      
+      :loop="true"
+      :data="images"
+      :renderItem="_renderItem"
+      :windowSize="400"
+      :itemWidth="350"
+      :itemHeight="350"
+      :sliderHeight="550"
+      :sliderWidth="400"
+      :inactiveSlideScale="0.6"
+      :inactiveSlideOpacity="0.4"
+    />
   
    </scroll-view>
   </nb-container>
@@ -63,6 +73,12 @@ export default {
     Carousel
   },
   methods: {
+    handleChatTap: async function(match) {
+      this.navigation.navigate("Chat", {
+        artistImageLink: this.navigation.getParam("artistImageLink"),
+        clientImageLink: this.navigation.getParam("clientImageLink")
+      });
+    },
     _renderItem: function({ item, index }) {
       return (
         <View>
@@ -76,9 +92,6 @@ export default {
             }}
           />
         </View>
-        // <View>
-        //   <Text>{item.one}</Text>
-        // </View>
       );
     },
     c: function() {

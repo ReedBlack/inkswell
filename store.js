@@ -11,7 +11,8 @@ const store = new Vuex.Store({
     state: {
 
         artists: [],
-        matches: []
+        matches: [],
+        chats: []
     },
     getters: {
         artists(state) {
@@ -19,6 +20,9 @@ const store = new Vuex.Store({
         },
         matches(state) {
             return state.matches
+        },
+        matches(state) {
+            return state.chats
         }
     },
     actions: {
@@ -31,31 +35,40 @@ const store = new Vuex.Store({
 
             const matches = await API.getMatches()
             context.commit("setMatches", matches)
-        }
+        },
+        async getChats(context) {
+
+            const chats = await API.getChats()
+            context.commit("setChats", chats)
+        },
     },
     mutations: {
         setArtistUsers(state, artists) {
             state.artists = artists
-            // console.log(state.artists, "whatever the fuck")
         },
         addArtist(state, artist) {
             state.artists.push(artist)
         },
-        removeArtist(state, artists) {
+        removeArtist(state, artist) {
             let index = state.artists.indexOf(artist)
             state.artists.splice(index, 1)
         },
         setMatches(state, matches) {
             state.matches = matches
-            // console.log(state.artists, "whatever the fuck")
         },
         addMatch(state, match) {
             state.matches.push(match)
         },
-        removeMatch(state, matches) {
+        removeMatch(state, match) {
             let index = state.matches.indexOf(match)
             state.matches.splice(index, 1)
-        }
+        },
+        setChats(state, chats) {
+            state.chats = chats
+        },
+        addChats(state, chats) {
+            state.chats.push(chats)
+        },
     }
 
 

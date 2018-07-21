@@ -39,14 +39,6 @@ import Vuex from "vuex";
 import CardComponent from "./card";
 
 export default {
-  //  computed: {
-  //    artistArr: async function() {
-  //       console.log(store.state.artists, "yo dawg");
-
-  //      return store.state.artists.artists;
-  //     }
-  //   },
-
   data: function() {
     return {
       isLoopingRequired: false,

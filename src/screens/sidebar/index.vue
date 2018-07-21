@@ -25,7 +25,7 @@
 <script>
 import { Dimensions, Platform } from "react-native";
 import drawerCover from "../../../assets/fishLogo.1.png";
-import Tatpic1 from "../../../assets/tattoopic1.jpg";
+import Tatpic1 from "../../../assets/tattoo2.jpg";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -77,13 +77,13 @@ export default {
           route: "MyProfile",
           icon: "information-circle",
           bg: "#2f2f4f"
-        },
-        {
-          name: "Edit Profile",
-          route: "MyProfile",
-          icon: "information-circle",
-          bg: "#2f2f4f"
         }
+        // {
+        //   name: "Edit Profile",
+        //   route: "MyProfile",
+        //   icon: "information-circle",
+        //   bg: "#2f2f4f"
+        // }
       ]
     };
   },

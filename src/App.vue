@@ -16,6 +16,7 @@ import ArtistSignup from "./screens/ArtistSignup";
 import MyProfile from "./screens/MyProfile";
 import Profile from "./screens/Profile";
 import Matches from "./screens/Matches";
+import Chat from "./screens/Chat";
 
 const Drawer = DrawerNavigator(
   {
@@ -43,7 +44,8 @@ const AppNavigation = StackNavigator(
     SimpleDeck: { screen: DeckSwiperScreen },
     SignupScreen: { screen: SignupScreen },
     ArtistSignup: { screen: ArtistSignup },
-    Profile: { screen: Profile }
+    Profile: { screen: Profile },
+    Chat: { screen: Chat }
   },
   {
     initialRouteName: "Drawer",

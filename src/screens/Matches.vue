@@ -1,6 +1,6 @@
 <template>
     <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header>
+        <nb-header :style="{height: 60}">
           <nb-left>
             <nb-button
               transparent
@@ -52,15 +52,15 @@ export default {
   },
   methods: {
     handleListTap: async function(match) {
-      console.log(match.artistName);
       this.navigation.navigate("Profile", {
-        imageLink: match.artistImageLink,
+        match: match,
+        artistImageLink: match.artistImageLink,
         picOne: match.picOne,
-
+        clientImageLink: match.clientImageLink,
         picTwo: match.picTwo,
         picThree: match.picThree,
         shop: match.shop,
-        name: match.artist_name,
+        artistName: match.artist_name,
         email: match.artist_email
       });
     }
