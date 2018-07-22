@@ -1,6 +1,9 @@
 <template>
     <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header class="gray" :style="{height: 70}">
+        <nb-header class="gray" :style="{height: 70, shadowOffset: {  height: 8 },
+            shadowColor: 'black',
+            shadowOpacity: .8,
+            shadowRadius: 10}">
           <nb-left>
             <nb-button
               transparent
@@ -10,7 +13,7 @@
             </nb-button>
           </nb-left>
           <nb-body>
-            <Image :source="headerIcon"  />
+            <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
           </nb-body>
           <nb-right />
         </nb-header>
@@ -40,7 +43,7 @@
 
 <script>
 import store from "../../store";
-import headerIcon from "../../assets/small-sideways.png";
+import headerIcon from "../../assets/i.png";
 import launchScreenBg from "../../assets/wallpaperbg.jpg";
 export default {
   props: {
@@ -84,7 +87,7 @@ export default {
 }
 
 .gray {
-  background-color: gray;
+  background-color: #202020;
 }
 .cream {
   color: #fffede;

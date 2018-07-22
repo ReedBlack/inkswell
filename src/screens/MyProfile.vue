@@ -1,25 +1,28 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-     <nb-header class="gray" :style="{height: 70}">
-          <nb-left>
-            <nb-button
-              transparent
-              :onPress="() => this.props.navigation.navigate('Matches')"
-            >
-              <nb-icon class="cream" name="arrow-back" />
-            </nb-button>
-          </nb-left>
-          <nb-body>
-           <Image class="front" :source="headerIcon"  />
-          </nb-body>
-       
+     <nb-header class="gray" :style="{height: 70, shadowOffset: {  height: 8 },
+            shadowColor: 'black',
+            shadowOpacity: .8,
+            shadowRadius: 10}">
+        <nb-left>
+          <nb-button
+            transparent
+            :onPress="() => this.props.navigation.navigate('DrawerOpen')"
+          >
+            <nb-icon class="cream" name="arrow-back" />
+          </nb-button>
+        </nb-left>
+        <nb-body>
+            <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
+        </nb-body>
+        <nb-right />
      </nb-header>
         
           
     <Image :style="{flex:1, width: 400, height: 775}" :source="{uri: clients.client_image_link}" class="imageContainer" />
     <View class="shade">
       <nb-h1 class="cream pads">{{clients.client_name}}</nb-h1>
-      <text class="cream pads more">budget:{{clients.budget}}</text>
+      <text class="cream pads more">budget: {{clients.budget}}</text>
     </View>
     <View class="description">
        <nb-h2 class="cream">{{clients.client_name}}'s idea:</nb-h2>
@@ -30,7 +33,7 @@
 </template>
 
 <script>
-import headerIcon from "../../assets/small-sideways.png";
+import headerIcon from "../../assets/i.png";
 import React from "react";
 import store from "../../store";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
@@ -39,7 +42,6 @@ export default {
   data() {
     return {
       headerIcon: headerIcon,
-      getNick: "https://inkswell.herokuapp.com/clientusers/5/",
       clients: {}
     };
   },
@@ -50,7 +52,7 @@ export default {
   },
   mounted: async function() {
     await store.dispatch("getClientUsers");
-    this.clients = store.state.clients.clients[4];
+    this.clients = store.state.clients.clients[2];
   }
 };
 </script>
@@ -86,7 +88,7 @@ export default {
   color: #fffede;
 }
 .gray {
-  background-color: gray;
+  background-color: #202020;
   z-index: 10;
 }
 .imageContainer {

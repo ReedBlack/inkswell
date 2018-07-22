@@ -5,32 +5,30 @@
     <Image :source="launchScreenLogo" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
     <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:250}" />
     <nb-text :style="{marginTop: -75, marginLeft: 71}" class="text-color-white">Linking tattoo artists and clients</nb-text>
-      <nb-content class="margins" padder :style="{marginTop: 10}" >
+      <nb-content class="margins" padder :style="{marginTop: 100}" >
             <nb-form>
                 <nb-item fixedLabel>
-                    <nb-label class="text-color-white">Username</nb-label>
+                    <nb-label class="text-color-white light">Username</nb-label>
                     <nb-input />
                 </nb-item>
                 <nb-item fixedLabel last>
-                    <nb-label class="text-color-white">Password</nb-label>
+                    <nb-label class="text-color-white light">Password</nb-label>
                     <nb-input secureTextEntry />
                 </nb-item>
             </nb-form>
             <nb-button block :style="stylesObj.btnContainer">
-                <nb-text :onPress="showDrawer">Artist Sign In</nb-text>
+                <nb-text :onPress="showDrawer">Sign In</nb-text>
             </nb-button>
-            <nb-button block :style="stylesObj.btnContainer">
-                <nb-text :onPress="showDrawer">Client Sign In</nb-text>
-            </nb-button>
+          
        </nb-content>
-       <view :style="{ marginBottom: 25 }">
+       <!-- <view :style="{ marginBottom: 25 }">
         <nb-button :style="stylesObj.btnContainer">
           <nb-text id="text-color-navy" :onPress="navigateToSignupScreen">client signup</nb-text>
         </nb-button>
         <nb-button :style="stylesObj.btnContainer">
           <nb-text id="text-color-navy" :onPress="navigateToArtistSignupScreen">artist signup</nb-text>
         </nb-button>
-      </view>
+      </view> -->
   </nb-container>
 
 </template>
@@ -59,6 +57,7 @@ export default {
           top: Platform.OS === "android" ? 35 : 60
         },
         btnContainer: {
+          marginTop: 38,
           backgroundColor: "black",
           opacity: 0.5,
           alignSelf: "center",
@@ -93,6 +92,9 @@ export default {
 
  
 <style>
+.light {
+  opacity: 0.8;
+}
 .imageContainer {
   position: absolute;
   z-index: -10;

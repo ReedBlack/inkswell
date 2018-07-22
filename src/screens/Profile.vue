@@ -1,6 +1,10 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-     <nb-header class="gray" :style="{height: 70}">
+     <nb-header class="gray" :style="{height: 70,
+     shadowOffset: {  height: 7 },
+            shadowColor: 'black',
+            shadowOpacity: .7,
+            shadowRadius: 9}">
           <nb-left>
             <nb-button
               transparent
@@ -10,17 +14,15 @@
             </nb-button>
           </nb-left>
           <nb-body>
-           <Image class="front" :source="headerIcon"  />
+           <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
           </nb-body>
           <nb-right>
             <nb-button
               transparent
               :onPress="() => handleChatTap()"
             >
-              <nb-icon class="cream" name="arrow-forward" />
-
+              <nb-text class="cream">discuss</nb-text>
             </nb-button>
-           
           </nb-right>
      </nb-header>
        
@@ -40,8 +42,8 @@
       :itemHeight="350"
       :sliderHeight="550"
       :sliderWidth="400"
-      :inactiveSlideScale="0.6"
-      :inactiveSlideOpacity="0.4"
+      :inactiveSlideScale="0.5"
+      :inactiveSlideOpacity="0.3"
     />
   
 
@@ -49,7 +51,7 @@
 </template>
 
 <script>
-import headerIcon from "../../assets/small-sideways.png";
+import headerIcon from "../../assets/i.png";
 import React from "react";
 
 import { Animated, ScrollView, Image, View, Text } from "react-native";
@@ -82,14 +84,23 @@ export default {
     },
     _renderItem: function({ item, index }) {
       return (
-        <View>
+        <View
+          style={{
+            shadowOffset: { width: 5, height: 4 },
+            shadowColor: "black",
+            shadowOpacity: 0.7,
+            shadowRadius: 5,
+            elevation: 3
+          }}
+        >
           <Image
             source={{ uri: item.uri }}
             style={{
               marginTop: 275,
-              marginRight: 10,
+              marginLeft: 12,
               width: 300,
-              height: 300
+              height: 300,
+              borderRadius: 5
             }}
           />
         </View>
@@ -124,7 +135,7 @@ export default {
   color: #fffede;
 }
 .gray {
-  background-color: gray;
+  background-color: #202020;
   z-index: 10;
 }
 .imageContainer {

@@ -1,8 +1,11 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header class="gray" :style="{ height: 60}">
+        <nb-header class="gray" :style="{ height: 60, shadowOffset: {  height: 8 },
+            shadowColor: 'black',
+            shadowOpacity: .8,
+            shadowRadius: 10}">
           <nb-left>
-            <nb-button
+            <nb-button class="front"
               transparent
               :onPress="() => this.props.navigation.navigate('DrawerOpen')"
             >
@@ -10,31 +13,28 @@
             </nb-button>
           </nb-left>
           <nb-body>
-            <Image :source="headerIcon"  />
+            <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
           </nb-body>
           <nb-right />
         </nb-header>
         <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
-        <scroll-view>
+      
             <Swiper class="contain" v-if="artists"
-     
                 :cards="artists"
                 :renderCard="_renderItem"
                 :showSecondCard="true"
                 :stackSize="3"
                 :verticalSwipe="false"
-                :backgroundColor="null"
-               
-                
+                :backgroundColor="null"      
             />
-       </scroll-view>
+     
      
   </nb-container>
 </template>
 
 <script>
 import launchScreenBg from "../../assets/wallpaperbg.jpg";
-import headerIcon from "../../assets/small-sideways.png";
+import headerIcon from "../../assets/i.png";
 import React from "react";
 import { Animated, Image, View, Text, ScrollView } from "react-native";
 import store from "../../store";
@@ -42,9 +42,13 @@ import API from "../../lib/API";
 import Vuex from "vuex";
 import Carousel from "react-native-snap-carousel";
 import Swiper from "react-native-deck-swiper";
-// import CardComponent from "./card";
 
 export default {
+  props: {
+    navigation: {
+      type: Object
+    }
+  },
   components: {
     Carousel,
     Swiper
@@ -59,7 +63,6 @@ export default {
   mounted: async function() {
     await store.dispatch("getArtistUsers");
     this.artists = store.state.artists.artists;
-    console.log(this.artists);
   },
   methods: {
     _renderItem: function(item, index) {
@@ -70,7 +73,7 @@ export default {
               backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
               height: 455,
-
+              marginTop: 70,
               marginLeft: -3,
               borderRadius: 5
             }}
@@ -126,6 +129,9 @@ export default {
 </script>
 
 <style>
+.front {
+  z-index: 1000;
+}
 .contain {
   margin-top: 100;
   height: 90%;
@@ -135,8 +141,7 @@ export default {
   z-index: -1;
 }
 .gray {
-  background-color: gray;
-  z-index: 1000;
+  background-color: #202020;
 }
 .cream {
   color: #fffede;

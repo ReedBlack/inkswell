@@ -1,17 +1,21 @@
 <template>
 <nb-container :style="{ backgroundColor: '#fff' }">
 
-    <nb-header class="gray" :style="{height: 60}">
+    <nb-header class="gray" :style="{height: 60, 
+            shadowOffset: {  height: 8 },
+            shadowColor: 'black',
+            shadowOpacity: .8,
+            shadowRadius: 10}">
           <nb-left>
             <nb-button
               transparent
-              :onPress="() => this.props.navigation.navigate('Profile')"
+              :onPress="() => this.props.navigation.navigate('Matches')"
             >
               <nb-icon class="cream" name="arrow-back" />
             </nb-button>
           </nb-left>
           <nb-body>
-            <Image :source="headerIcon"  />
+            <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
           </nb-body>
           <nb-right />
         </nb-header>
@@ -19,50 +23,57 @@
          <View :style="{ height: 80}">
          
           <nb-left class="client thumb" :style="{alignSelf: 'flex-start', width:100}">
-             <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" />
+             <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" :style="{
+            shadowOffset: { width: 5, height: 5 },
+            shadowColor: 'black',
+            shadowOpacity: 0.7,
+            shadowRadius: 5,
+           
+          }" />
           </nb-left>
           <nb-right class="artist thumb" :style="{alignSelf: 'flex-end', width:100}">
              <nb-thumbnail large :source="{uri: navigation.getParam('artistImageLink')}" />
           </nb-right>
         </View>
-        <nb-content>
-           <view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
+        <nb-content :style="{height:400}" >
+           <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
             <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">   
         
-                <nb-text>
+                <nb-text class="clienttext" >
                 {{comment.chatClient}}
                 </nb-text>
         
             </nb-left>
             <nb-right class="artistComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatArtist">
         
-                <nb-text>
+                <nb-text class="artisttext">
                 {{comment.chatArtist}}
                 </nb-text>
         
             </nb-right>    
-         </view> 
+         </scroll-view> 
         </nb-content>
     
-         <nb-content padder>
-            <nb-form left :style="{height:180}">
-                <nb-item left rounded>
-                    <nb-input :onChangeText="submitComment" v-model="comment.chatClient" type="text" placeholder="say sumpin" />
+
+            <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-325}">
+                <nb-item left rounded :style="{alignSelf: 'flex-start', width:280}">
+                    <nb-input small note class="inputBg" :style="{color:'silver'}" v-model="comment.chat_client" type="text" placeholder="say sumpin" />
                 </nb-item>
-           <nb-button right :onPress="submitComment">Send</nb-button>
+                    <nb-button right id="bringUp" :onPress="submitComment" :style="{alignSelf: 'flex-start'}">
+                      <nb-text>send</nb-text>
+                    </nb-button>
             </nb-form>
-       </nb-content>
+
   
     </nb-container>
 </template>
 
 <script>
-import headerIcon from "../../assets/small-sideways.png";
+import headerIcon from "../../assets/i.png";
 import React from "react";
-import ScrollView from "react-native";
+import { ScrollView } from "react-native";
 import store from "../../store";
 import chatImage from "../../assets/wallpaperbg.jpg";
-// import API from "../../lib/API";
 
 export default {
   props: {
@@ -73,15 +84,13 @@ export default {
   data: function() {
     return {
       headerIcon: headerIcon,
-      CHAT_API_URL: "https://inkswell.herokuapp.com/matches/1/chat",
+      CHAT_API_URL: "https://inkswell.herokuapp.com/chat",
       chatImage: chatImage,
       chat: [],
       comment: {
-        matchId: 1,
-        chatClient: "",
-        chatArtist: null,
-        clientId: 5,
-        artistID: 3
+        match_id: 2,
+        chat_client: "",
+        chat_artist: null
       }
     };
   },
@@ -90,14 +99,13 @@ export default {
     this.chat = await store.state.chats;
   },
   methods: {
-    submitComment: function() {
+    submitComment: async function() {
+      await this.chat.push(this.comment);
       this.postComment(this.comment);
       this.comment = {
-        matchId: 1,
-        chatClient: "",
-        chatArtist: null,
-        clientId: 5,
-        artistID: 3
+        match_id: 2,
+        chat_client: "",
+        chat_artist: null
       };
     },
     postComment() {
@@ -106,11 +114,9 @@ export default {
         method: "POST",
         body: JSON.stringify(this.comment)
       }).then(response => response.json());
-      this.comment.matchId = 1;
-      this.comment.chatClient = "";
-      this.comment.chatArtist = null;
-      this.comment.clientId = 5;
-      this.comment.artistId = 3;
+      this.comment.match_id = 2;
+      this.comment.chat_client = "";
+      this.comment.chat_artist = null;
       console.log("im working");
     }
   }
@@ -118,6 +124,18 @@ export default {
 </script>
 
 <style>
+.clienttext {
+  color: #fffede;
+  font-size: 19;
+}
+.artisttext {
+  font-size: 19;
+  color: #202020;
+}
+#bringUp {
+  z-index: 1000;
+  background-color: silver;
+}
 .thumb {
   margin-bottom: 65;
 }
@@ -130,19 +148,25 @@ export default {
   margin-left: 15;
 }
 .gray {
-  background-color: gray;
+  background-color: #202020;
 }
 .clientComment {
-  padding: 8;
-  margin: 8;
+  padding: 9;
+  margin: 3;
+  margin-left: 7;
+  border-color: #fffede;
+  border-width: 1;
   border-radius: 11;
-  background-color: silver;
+  background-color: #202020;
 }
 .artistComment {
-  padding: 8;
-  margin: 8;
+  padding: 9;
+  margin: 3;
+  margin-right: 7;
+  border-color: #202020;
+  border-width: 2;
   border-radius: 11;
-  background-color: bisque;
+  background-color: #fffede;
 }
 .imageContainerChat {
   position: absolute;
