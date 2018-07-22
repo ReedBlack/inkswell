@@ -1,6 +1,6 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header class="gray" :style="{height: 60}">
+        <nb-header class="gray" :style="{ height: 60}">
           <nb-left>
             <nb-button
               transparent
@@ -15,23 +15,19 @@
           <nb-right />
         </nb-header>
         <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
-            <Carousel v-if="artists"
+        <scroll-view>
+            <Swiper class="contain" v-if="artists"
      
-                :data="artists"
-                :renderItem="_renderItem"
+                :cards="artists"
+                :renderCard="_renderItem"
+                :showSecondCard="true"
+                :stackSize="3"
+                :verticalSwipe="false"
+                :backgroundColor="null"
+               
                 
-                :windowSize="400"
-                 :itemWidth="350"
-                :itemHeight="350"
-                :sliderHeight="550"
-               :sliderWidth="400"
-               :inactiveSlideScale="0.6"
-               :inactiveSlideOpacity="0.4"
-
-
             />
-           
-          
+       </scroll-view>
      
   </nb-container>
 </template>
@@ -40,16 +36,18 @@
 import launchScreenBg from "../../assets/wallpaperbg.jpg";
 import headerIcon from "../../assets/small-sideways.png";
 import React from "react";
-import { Animated, Image, View, Text } from "react-native";
+import { Animated, Image, View, Text, ScrollView } from "react-native";
 import store from "../../store";
 import API from "../../lib/API";
 import Vuex from "vuex";
 import Carousel from "react-native-snap-carousel";
+import Swiper from "react-native-deck-swiper";
 // import CardComponent from "./card";
 
 export default {
   components: {
-    Carousel
+    Carousel,
+    Swiper
   },
   data: function() {
     return {
@@ -65,22 +63,21 @@ export default {
   },
   methods: {
     _renderItem: function(item, index) {
-      console.log(item.item.artist_name);
       return (
         <View>
           <View
             style={{
-              backgroundColor: "rgba(169,169,169,.5)",
+              backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
               height: 455,
-              marginTop: 60,
-              marginLeft: -10,
+
+              marginLeft: -3,
               borderRadius: 5
             }}
           >
             <View
               style={{
-                backgroundColor: "rgba(169,169,169,.3)",
+                backgroundColor: "rgba(169,169,169,.5)",
                 marginLeft: 16,
                 marginTop: 5
               }}
@@ -93,7 +90,7 @@ export default {
                   fontSize: 30
                 }}
               >
-                {item.item.artist_name}
+                {item.artist_name}
               </Text>
             </View>
             <Text
@@ -105,10 +102,10 @@ export default {
                 fontSize: 19
               }}
             >
-              {item.item.shop}
+              {item.shop}
             </Text>
             <Image
-              source={{ uri: item.item.pic_two }}
+              source={{ uri: item.pic_two }}
               style={{
                 marginTop: 10,
                 marginLeft: 20,
@@ -129,12 +126,17 @@ export default {
 </script>
 
 <style>
+.contain {
+  margin-top: 100;
+  height: 90%;
+}
 .imageContainer {
   position: absolute;
-  z-index: -10;
+  z-index: -1;
 }
 .gray {
   background-color: gray;
+  z-index: 1000;
 }
 .cream {
   color: #fffede;

@@ -26,6 +26,7 @@
     "native-base": "2.6.0",
     "react": "16.3.1",
     "react-native": "~0.55.2",
+    "react-native-deck-swiper": "^1.5.17",
     "react-native-snap-carousel": "^3.7.2",
     "socket.io-client": "^2.1.1",
     "vue-native-core": "0.0.7",

@@ -10,7 +10,6 @@ import { StackNavigator, DrawerNavigator } from "vue-native-router";
 import { Root } from "native-base";
 import HomeScreen from "./screens/home/index.vue";
 import SideBarScreen from "./screens/sidebar/index.vue";
-import SideBarRight from "./screens/sidebar/artistindex.vue";
 import DeckSwiperScreen from "./screens/deckSwiper";
 import SignupScreen from "./screens/SignupScreen";
 import ArtistSignup from "./screens/ArtistSignup";
@@ -37,29 +36,10 @@ const Drawer = DrawerNavigator(
     }
   }
 );
-const DrawerRight = DrawerNavigator(
-  {
-    Home: { screen: HomeScreen },
-    NHDeckSwiper: { screen: DeckSwiperScreen },
-    Matches: { screen: Matches },
-    MyProfile: { screen: MyProfile }
-  },
-  {
-    drawerPosition: "right",
-    initialRouteName: "Home",
-    contentOptions: {
-      activeTintColor: "#e91e63"
-    },
-    contentComponent: props => {
-      return <SideBarScreen {...props} />;
-    }
-  }
-);
 
 const AppNavigation = StackNavigator(
   {
     Drawer: { screen: Drawer },
-    DrawerRight: { screen: DrawerRight },
     Home: { screen: HomeScreen },
     SimpleDeck: { screen: DeckSwiperScreen },
     SignupScreen: { screen: SignupScreen },
