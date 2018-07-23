@@ -52,7 +52,7 @@ export default {
   },
   mounted: async function() {
     await store.dispatch("getClientUsers");
-    this.clients = store.state.clients.clients[2];
+    this.clients = store.state.clients.clients[4];
   }
 };
 </script>
@@ -94,5 +94,6 @@ export default {
 .imageContainer {
   position: absolute;
   z-index: -100;
+  margin-top: 50;
 }
 </style>

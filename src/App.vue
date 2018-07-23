@@ -15,6 +15,7 @@ import SignupScreen from "./screens/SignupScreen";
 import ArtistSignup from "./screens/ArtistSignup";
 import MyProfile from "./screens/MyProfile";
 import Profile from "./screens/Profile";
+import PreviewProfile from "./screens/PreviewProfile";
 import Matches from "./screens/Matches";
 import Chat from "./screens/Chat";
 
@@ -45,6 +46,7 @@ const AppNavigation = StackNavigator(
     SignupScreen: { screen: SignupScreen },
     ArtistSignup: { screen: ArtistSignup },
     Profile: { screen: Profile },
+    PreviewProfile: { screen: PreviewProfile },
     Chat: { screen: Chat }
   },
   {

@@ -25,7 +25,9 @@
                 :showSecondCard="true"
                 :stackSize="3"
                 :verticalSwipe="false"
-                :backgroundColor="null"      
+                :backgroundColor="null"  
+                :cardIndex="cardIndex"
+                :onTapCard="onTapCard"    
             />
      
      
@@ -57,7 +59,8 @@ export default {
     return {
       headerIcon: headerIcon,
       launchScreenBg: launchScreenBg,
-      artists: null
+      artists: null,
+      cardIndex: 0
     };
   },
   mounted: async function() {
@@ -65,6 +68,17 @@ export default {
     this.artists = store.state.artists.artists;
   },
   methods: {
+    onTapCard: async function(i) {
+      await this.navigation.navigate("PreviewProfile", {
+        artistImageLink: this.artists[i].artist_image_link,
+        picOne: this.artists[i].pic_one,
+
+        picTwo: this.artists[i].pic_two,
+        picThree: this.artists[i].pic_three,
+        shop: this.artists[i].shop,
+        artistName: this.artists[i].artist_name
+      });
+    },
     _renderItem: function(item, index) {
       return (
         <View>
@@ -73,7 +87,7 @@ export default {
               backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
               height: 455,
-              marginTop: 70,
+              marginTop: 120,
               marginLeft: -3,
               borderRadius: 5
             }}
@@ -139,6 +153,7 @@ export default {
 .imageContainer {
   position: absolute;
   z-index: -1;
+  margin-top: 80;
 }
 .gray {
   background-color: #202020;

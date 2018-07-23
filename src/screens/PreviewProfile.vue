@@ -8,7 +8,7 @@
           <nb-left>
             <nb-button
               transparent
-              :onPress="() => this.props.navigation.navigate('Matches')"
+              :onPress="() => this.props.navigation.goBack()"
             >
               <nb-icon class="cream" name="arrow-back" />
             </nb-button>
@@ -17,12 +17,7 @@
            <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
           </nb-body>
           <nb-right>
-            <nb-button
-              transparent
-              :onPress="() => handleChatTap()"
-            >
-              <nb-text class="cream">discuss</nb-text>
-            </nb-button>
+          
           </nb-right>
      </nb-header>
        
@@ -32,7 +27,7 @@
       <nb-h1 class="cream pads">{{navigation.getParam('artistName')}}</nb-h1>
       <text class="cream pads more">{{navigation.getParam("shop")}}</text>
     </View>
-      <Carousel 
+      <Carousel :style="{height: 330}"
       
       :loop="true"
       :data="images"
@@ -76,12 +71,6 @@ export default {
     Carousel
   },
   methods: {
-    handleChatTap: async function(match) {
-      this.navigation.navigate("Chat", {
-        artistImageLink: this.navigation.getParam("artistImageLink"),
-        clientImageLink: this.navigation.getParam("clientImageLink")
-      });
-    },
     _renderItem: function({ item, index }) {
       return (
         <View
@@ -90,13 +79,14 @@ export default {
             shadowColor: "black",
             shadowOpacity: 0.7,
             shadowRadius: 5,
-            elevation: 3
+            elevation: 3,
+            height: 300,
+            marginTop: 325
           }}
         >
           <Image
             source={{ uri: item.uri }}
             style={{
-              marginTop: 335,
               marginLeft: 12,
               width: 300,
               height: 300,
@@ -115,18 +105,18 @@ export default {
 
 <style>
 .more {
-  margin-left: 140;
+  margin-left: 130;
 }
 .pads {
-  margin-left: 50;
+  margin-left: 40;
 }
 .shade {
   background-color: rgba(34, 34, 34, 0.5);
   transform: rotate(-11deg);
   position: absolute;
   margin-top: 95;
-  margin-left: -40;
-  width: 160%;
+  margin-left: -10;
+  width: 130%;
 }
 .front {
   z-index: 1000;
@@ -139,8 +129,8 @@ export default {
   z-index: 10;
 }
 .imageContainer {
+  margin-top: 60;
   position: absolute;
   z-index: -100;
-  margin-top: 60;
 }
 </style>

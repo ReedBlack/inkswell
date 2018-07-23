@@ -12,12 +12,18 @@ import { StackNavigator } from "vue-native-router";
 import { VueNativeBase } from "native-base";
 import { AppLoading } from "expo";
 import { store } from "../../store";
+import socketio from "socket.io-client";
+import VueSocketIO from "vue-socket.io";
 
 import App from "../App.vue";
 
 Vue.prototype.$store = store;
 // registering all native-base components to the global scope of the Vue
 Vue.use(VueNativeBase);
+
+export const SocketInstance = socketio("http://localhost:4000");
+
+Vue.use(VueSocketIO, SocketInstance);
 
 export default {
   components: { App, AppLoading },

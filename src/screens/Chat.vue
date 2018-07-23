@@ -49,6 +49,7 @@
                 <nb-text class="artisttext">
                 {{comment.chatArtist}}
                 </nb-text>
+                
         
             </nb-right>    
          </scroll-view> 
@@ -74,6 +75,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 import store from "../../store";
 import chatImage from "../../assets/wallpaperbg.jpg";
+import socketio from "socket.io-client";
 
 export default {
   props: {
@@ -83,10 +85,12 @@ export default {
   },
   data: function() {
     return {
+      socket: socketio("http://localhost:4000"),
       headerIcon: headerIcon,
       CHAT_API_URL: "https://inkswell.herokuapp.com/chat",
       chatImage: chatImage,
       chat: [],
+      timer: "",
       comment: {
         match_id: 2,
         chat_client: "",
@@ -94,19 +98,32 @@ export default {
       }
     };
   },
+  created: function() {
+    this.fetchComments();
+    this.timer = setInterval(this.fetchEventsList, 300000);
+  },
   mounted: async function() {
+    this.socket;
     await store.dispatch("getChats");
     this.chat = await store.state.chats;
   },
   methods: {
     submitComment: async function() {
-      await this.chat.push(this.comment);
-      this.postComment(this.comment);
+      await this.socket.emit("chat", this.comment);
+
+      this.socket.on("chat", async comment => {
+        await this.chat.concat(this.comment);
+      });
+      // await this.chat.push(this.comment);
+      await this.postComment(this.comment);
       this.comment = {
         match_id: 2,
         chat_client: "",
         chat_artist: null
       };
+    },
+    cancelAutoUpdate: function() {
+      clearInterval(this.timer);
     },
     postComment() {
       return fetch(this.CHAT_API_URL, {
@@ -154,7 +171,7 @@ export default {
   padding: 9;
   margin: 3;
   margin-left: 7;
-  border-color: #fffede;
+  border-color: silver;
   border-width: 1;
   border-radius: 11;
   background-color: #202020;
@@ -169,6 +186,7 @@ export default {
   background-color: #fffede;
 }
 .imageContainerChat {
+  margin-top: 0;
   position: absolute;
   z-index: -10;
 }
