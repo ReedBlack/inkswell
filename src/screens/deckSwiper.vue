@@ -63,7 +63,7 @@ export default {
       cardIndex: 0
     };
   },
-  mounted: async function() {
+  beforeMount: async function() {
     await store.dispatch("getArtistUsers");
     this.artists = store.state.artists.artists;
   },
@@ -153,7 +153,7 @@ export default {
 .imageContainer {
   position: absolute;
   z-index: -1;
-  margin-top: 80;
+  margin-top: 60;
 }
 .gray {
   background-color: #202020;

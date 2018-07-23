@@ -75,7 +75,6 @@ import React from "react";
 import { ScrollView } from "react-native";
 import store from "../../store";
 import chatImage from "../../assets/wallpaperbg.jpg";
-import socketio from "socket.io-client";
 
 export default {
   props: {
@@ -85,9 +84,9 @@ export default {
   },
   data: function() {
     return {
-      socket: socketio("http://localhost:4000"),
       headerIcon: headerIcon,
       CHAT_API_URL: "https://inkswell.herokuapp.com/chat",
+      CHAT_API_URL2: "https://inkswell.herokuapp.com/matches/2/chat",
       chatImage: chatImage,
       chat: [],
       timer: "",
@@ -98,32 +97,29 @@ export default {
       }
     };
   },
-  created: function() {
-    this.fetchComments();
-    this.timer = setInterval(this.fetchEventsList, 300000);
-  },
   mounted: async function() {
-    this.socket;
-    await store.dispatch("getChats");
-    this.chat = await store.state.chats;
+    this.timer = setInterval(() => this.getComments(), 1500);
   },
   methods: {
+    getComments: async function() {
+      fetch(this.CHAT_API_URL2)
+        .then(res => res.json())
+        .then(res => {
+          this.chat = res;
+          console.log("fetch loop active");
+        });
+    },
+    cancelAutoUpdate: function() {
+      clearInterval(this.timer);
+    },
     submitComment: async function() {
-      await this.socket.emit("chat", this.comment);
-
-      this.socket.on("chat", async comment => {
-        await this.chat.concat(this.comment);
-      });
-      // await this.chat.push(this.comment);
-      await this.postComment(this.comment);
+      await this.chat.push(this.comment);
+      this.postComment(this.comment);
       this.comment = {
         match_id: 2,
         chat_client: "",
         chat_artist: null
       };
-    },
-    cancelAutoUpdate: function() {
-      clearInterval(this.timer);
     },
     postComment() {
       return fetch(this.CHAT_API_URL, {
@@ -136,6 +132,10 @@ export default {
       this.comment.chat_artist = null;
       console.log("im working");
     }
+  },
+  componentWillUnmount: function() {
+    console.log("hitting destroy function");
+    clearInterval(this.timer);
   }
 };
 </script>
@@ -186,7 +186,7 @@ export default {
   background-color: #fffede;
 }
 .imageContainerChat {
-  margin-top: 0;
+  margin-top: 60;
   position: absolute;
   z-index: -10;
 }

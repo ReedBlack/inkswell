@@ -4,7 +4,7 @@
      shadowOffset: {  height: 7 },
             shadowColor: 'black',
             shadowOpacity: .7,
-            shadowRadius: 9}">
+            shadowRadius: 9, borderWidth:1, borderColor: '#202020'}">
           <nb-left>
             <nb-button
               transparent
