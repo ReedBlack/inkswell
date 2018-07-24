@@ -2,20 +2,15 @@
   <nb-container>
     <nb-content class="sidebar-content-wrapper"  :bounces="false">
       <image :source="drawerCover" resizeMode="center" class="drawer-cover" :style="stylesObj.drawerCoverObj"/>
-      <image :source="Tatpic1" class="backgroundpic" />
-      <nb-list>
-        <nb-list-item v-for="data in datas" :key="data.route" button noBorder :onPress="() => handleListItemClick(data)">
-          <nb-left>
-            <nb-icon
-              active
-              :name="data.icon"
-              :style="{ color: '#fffede', fontSize: 29, width: 30 }"
-            />
-            <nb-text class="list">
-              {{data.name}}
-            </nb-text>
-          </nb-left>
-        
+      <image :source="Tatpic1" class="backgroundpic" :style="{shadowOffset: {  height: 8 },
+            shadowColor: 'black',
+            shadowOpacity: .8,
+            shadowRadius: 10}" />
+      <nb-list class="list">
+        <nb-list-item v-for="data in datas" :key="data.route" button noBorder >
+          <touchable-opacity :onPress="() => handleListItemClick(data)">           
+            <Image resizeMode="center" :source="data.name" class="listitem" />              
+          </touchable-opacity> 
         </nb-list-item>
       </nb-list>
     </nb-content>
@@ -23,9 +18,12 @@
 </template>
 
 <script>
-import { Dimensions, Platform } from "react-native";
+import { Dimensions, Platform, TouchableOpacity } from "react-native";
 import drawerCover from "../../../assets/fishLogo.1.png";
-import Tatpic1 from "../../../assets/tattoo2.jpg";
+import Tatpic1 from "../../../assets/Arm.png";
+import swipe from "../../../assets/swipe.png";
+import matches from "../../../assets/matches.png";
+import profile from "../../../assets/profile.png";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -38,42 +36,33 @@ export default {
   data: function() {
     return {
       drawerCover: drawerCover,
+      swipe: swipe,
+      matches: matches,
+      profile: profile,
       Tatpic1: Tatpic1,
       stylesObj: {
         drawerCoverObj: {
           height: deviceHeight / 3.5,
 
-          marginLeft: 120,
-          marginTop: 75
-        },
-        drawerImageObj: {
-          left: Platform.OS === "android" ? deviceWidth / 10 : deviceWidth / 9,
-          top:
-            Platform.OS === "android" ? deviceHeight / 13 : deviceHeight / 12,
-          resizeMode: "cover"
-        },
-        badgeText: {
-          fontSize: Platform.OS === "android" ? 11 : 13,
-          marginTop: Platform.OS === "android" ? -3 : 0,
-          fontWeight: "400",
-          color: "#fffede"
+          marginLeft: -70,
+          marginTop: 60
         }
       },
       datas: [
         {
-          name: "Swipe",
+          name: swipe,
           route: "NHDeckSwiper",
           icon: "swap",
           bg: "#fffede"
         },
         {
-          name: "Matches",
+          name: matches,
           route: "Matches",
           icon: "albums",
           bg: "gray"
         },
         {
-          name: "My Profile",
+          name: profile,
           route: "MyProfile",
           icon: "information-circle",
           bg: "#2f2f4f"
@@ -97,29 +86,25 @@ export default {
 
 <style>
 .backgroundpic {
+  margin-left: -125;
+  margin-top: 45;
   position: absolute;
   z-index: -10;
+  transform: rotate(62deg);
 }
 .sidebar-content-wrapper {
   flex: 1;
   background-color: #202020;
 }
 .drawer-cover {
-  position: relative;
-  margin-bottom: 10;
-}
-.list-item-badge-container {
-  border-radius: 3;
-  height: 25;
-  width: 72;
-}
-.list-item-badge-text {
-  /* font-weight: 400; // not-working  */
-  /* font-weight: bold; // working */
-  text-align: center;
+  position: absolute;
 }
 .list {
-  color: #fffede;
+  margin-top: 379;
+  margin-left: -83;
+}
+.listitem {
+  margin: -30;
 }
 </style>
 

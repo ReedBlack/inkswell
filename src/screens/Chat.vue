@@ -1,6 +1,5 @@
 <template>
 <nb-container :style="{ backgroundColor: '#fff' }">
-
     <nb-header class="gray" :style="{height: 60, 
             shadowOffset: {  height: 8 },
             shadowColor: 'black',
@@ -21,14 +20,12 @@
         </nb-header>
         <Image :source="chatImage" resizeMode="cover" class="imageContainerChat" />
          <View :style="{ height: 80}">
-         
           <nb-left class="client thumb" :style="{alignSelf: 'flex-start', width:100}">
              <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" :style="{
             shadowOffset: { width: 5, height: 5 },
             shadowColor: 'black',
             shadowOpacity: 0.7,
             shadowRadius: 5,
-           
           }" />
           </nb-left>
           <nb-right class="artist thumb" :style="{alignSelf: 'flex-end', width:100}">
@@ -36,36 +33,27 @@
           </nb-right>
         </View>
         <nb-content :style="{height:400}" >
-           <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
-            <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">   
-        
+          <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
+            <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">           
                 <nb-text class="clienttext" >
                 {{comment.chatClient}}
-                </nb-text>
-        
+                </nb-text>        
             </nb-left>
-            <nb-right class="artistComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatArtist">
-        
+            <nb-right class="artistComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatArtist">        
                 <nb-text class="artisttext">
                 {{comment.chatArtist}}
                 </nb-text>
-                
-        
             </nb-right>    
-         </scroll-view> 
+        </scroll-view> 
         </nb-content>
-    
-
             <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-325}">
-                <nb-item left rounded :style="{alignSelf: 'flex-start', width:280}">
-                    <nb-input small note class="inputBg" :style="{color:'silver'}" v-model="comment.chat_client" type="text" placeholder="say sumpin" />
-                </nb-item>
-                    <nb-button right id="bringUp" :onPress="submitComment" :style="{alignSelf: 'flex-start'}">
-                      <nb-text>send</nb-text>
-                    </nb-button>
+              <nb-item left rounded :style="{alignSelf: 'flex-start', width:280}">
+                <nb-input small note class="inputBg" :style="{color:'silver'}" v-model="comment.chat_client" type="text" placeholder="say sumpin" />
+              </nb-item>
+              <nb-button right id="bringUp" :onPress="submitComment" :style="{alignSelf: 'flex-start'}">
+                <nb-text>send</nb-text>
+              </nb-button>
             </nb-form>
-
-  
     </nb-container>
 </template>
 
@@ -130,17 +118,12 @@ export default {
       this.comment.match_id = 2;
       this.comment.chat_client = "";
       this.comment.chat_artist = null;
-      console.log("im working");
     },
     leaveChat: function() {
       clearInterval(this.timer);
       this.navigation.navigate("Matches");
     }
   }
-  // componentWillUnmount: function() {
-  //   console.log("hitting destroy function");
-  //   clearInterval(this.timer);
-  // }
 };
 </script>
 

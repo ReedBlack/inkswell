@@ -2,7 +2,7 @@
   <nb-container :style="{ backgroundColor: '#fff' }">
         <nb-header class="gray" :style="{ height: 60, shadowOffset: {  height: 8 },
             shadowColor: 'black',
-            shadowOpacity: .8,
+            shadowOpacity: 10,
             shadowRadius: 10}">
           <nb-left>
             <nb-button class="front"

@@ -84,7 +84,7 @@ export default {
 .imageContainer {
   position: absolute;
   z-index: -10;
-  margin-top: 80;
+  margin-top: 69;
 }
 
 .gray {
