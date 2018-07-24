@@ -1,5 +1,9 @@
 <template>
 <nb-container :style="{ backgroundColor: '#fff' }">
+        <KeyboardAwareScrollView
+      :resetScrollToCoords="{ x: 0, y: 0 }"
+      :scrollEnabled="false"
+    >
     <nb-header class="gray" :style="{height: 60, 
             shadowOffset: {  height: 8 },
             shadowColor: 'black',
@@ -33,7 +37,8 @@
           </nb-right>
         </View>
         <nb-content :style="{height:400}" >
-          <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
+          <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index"
+          >
             <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">           
                 <nb-text class="clienttext" >
                 {{comment.chatClient}}
@@ -46,25 +51,34 @@
             </nb-right>    
         </scroll-view> 
         </nb-content>
-            <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-325}">
-              <nb-item left rounded :style="{alignSelf: 'flex-start', width:280}">
-                <nb-input small note class="inputBg" :style="{color:'silver'}" v-model="comment.chat_client" type="text" placeholder="say sumpin" />
-              </nb-item>
-              <nb-button right id="bringUp" :onPress="submitComment" :style="{alignSelf: 'flex-start'}">
+            <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-425}">
+              
+                <nb-item left :style="{alignSelf: 'flex-start', width:280, backgroundColor: 'silver'}">
+                  <TextInput class="inputBg" :editable="true" :multiline="true" :style="{color:'black', height: 45, fontSize: 20}" v-model="comment.chat_client" type="text" placeholder="  message" />
+                </nb-item>
+            
+              <nb-button dark id="bringUp" :onPress="submitComment" :style="{marginLeft: 6, alignSelf: 'flex-start'}">
                 <nb-text>send</nb-text>
               </nb-button>
             </nb-form>
+            </KeyboardAwareScrollView>
+
     </nb-container>
 </template>
 
 <script>
 import headerIcon from "../../assets/i.png";
 import React from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, TextInput } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import store from "../../store";
 import chatImage from "../../assets/wallpaperbg.jpg";
+import { GiftedChat } from "react-native-gifted-chat";
 
 export default {
+  components: {
+    KeyboardAwareScrollView
+  },
   props: {
     navigation: {
       type: Object
@@ -89,6 +103,9 @@ export default {
     this.timer = setInterval(() => this.getComments(), 900);
   },
   methods: {
+    ref: function(){
+      this.scrollView = ref
+    },
     getComments: async function() {
       fetch(this.CHAT_API_URL2)
         .then(res => res.json())
@@ -123,6 +140,7 @@ export default {
       clearInterval(this.timer);
       this.navigation.navigate("Matches");
     }
+    
   }
 };
 </script>
@@ -158,6 +176,7 @@ export default {
   padding: 9;
   margin: 3;
   margin-left: 7;
+  max-width: 70%;
   border-color: silver;
   border-width: 1;
   border-radius: 11;
@@ -167,6 +186,7 @@ export default {
   padding: 9;
   margin: 3;
   margin-right: 7;
+  max-width: 70%;
   border-color: #202020;
   border-width: 2;
   border-radius: 11;

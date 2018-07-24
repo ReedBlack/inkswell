@@ -87,7 +87,7 @@ export default {
               backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
               height: 455,
-              marginTop: 120,
+              marginTop: 80,
               marginLeft: -3,
               borderRadius: 5
             }}

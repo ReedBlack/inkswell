@@ -2,7 +2,7 @@
   <nb-container>
     <nb-content class="sidebar-content-wrapper"  :bounces="false">
       <image :source="drawerCover" resizeMode="center" class="drawer-cover" :style="stylesObj.drawerCoverObj"/>
-      <image :source="Tatpic1" class="backgroundpic" :style="{shadowOffset: {  height: 8 },
+      <image :source="Tatpic1" class="backgroundpic" :style="{shadowOffset: { width:10, height: 8 },
             shadowColor: 'black',
             shadowOpacity: .8,
             shadowRadius: 10}" />
@@ -86,11 +86,11 @@ export default {
 
 <style>
 .backgroundpic {
-  margin-left: -125;
-  margin-top: 45;
+  margin-left: -111;
+  margin-top: -1;
   position: absolute;
   z-index: -10;
-  transform: rotate(62deg);
+  transform: rotate(56deg);
 }
 .sidebar-content-wrapper {
   flex: 1;
@@ -100,11 +100,11 @@ export default {
   position: absolute;
 }
 .list {
-  margin-top: 379;
-  margin-left: -83;
+  margin-top: 387;
+  margin-left: -52;
 }
 .listitem {
-  margin: -30;
+  margin: -25;
 }
 </style>
 
