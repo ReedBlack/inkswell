@@ -24,14 +24,14 @@
                    <touchable-opacity class="flex-container" :on-press="() => handleListTap(match)" :style="{flex:1, flexDirection:'row'}">
                       <nb-body :style="{alignSelf: 'flex-start'}">
                           <nb-h2 class="cream">
-                              {{match.artistName}}
+                              {{match.clientName}}
                           </nb-h2>
                           <nb-text note class="cream">
-                              {{match.artistEmail}}
+                              {{match.clientEmail}}
                           </nb-text>
                       </nb-body>
                       <nb-right :style="{alignSelf: 'flex-end'}">
-                          <nb-thumbnail large :source="{uri: match.artistImageLink}" />
+                          <nb-thumbnail large :source="{uri: match.clientImageLink}" />
                       </nb-right>
                     </touchable-opacity>
                 </nb-list-item>
@@ -42,7 +42,7 @@
 
 
 <script>
-import { Alert } from 'react-native';
+import { Alert } from "react-native";
 import store from "../../store";
 import headerIcon from "../../assets/i.png";
 import launchScreenBg from "../../assets/wallpaperbg.jpg";
@@ -60,18 +60,16 @@ export default {
     };
   },
   methods: {
-    
     handleListTap: async function(match) {
       this.navigation.navigate("Profile", {
         match: match,
-        artistImageLink: match.artistImageLink,
-        picOne: match.picOne,
         clientImageLink: match.clientImageLink,
-        picTwo: match.picTwo,
-        picThree: match.picThree,
-        shop: match.shop,
-        artistName: match.artistName,
-        email: match.artist_email
+        artistImageLink: match.artistImageLink,
+        description: match.description,
+
+        budget: match.budget,
+        clientName: match.clientName,
+        email: match.client_email
       });
     }
   },

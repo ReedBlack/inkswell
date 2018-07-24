@@ -27,10 +27,10 @@
      </nb-header>
        
           
-    <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
+    <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('clientImageLink')}" class="imageContainer" />
     <View class="shade">
-      <nb-h1 class="cream pads">{{navigation.getParam('artistName')}}</nb-h1>
-      <text class="cream pads more">{{navigation.getParam("shop")}}</text>
+      <nb-h1 class="cream pads">{{navigation.getParam('clientName')}}</nb-h1>
+      <text class="cream pads more">{{navigation.getParam("budget")}}</text>
     </View>
       <Carousel 
       

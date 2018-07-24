@@ -22,26 +22,12 @@
      </nb-header>
        
           
-    <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
+    <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('clientImageLink')}" class="imageContainer" />
     <View class="shade">
-      <nb-h1 class="cream pads">{{navigation.getParam('artistName')}}</nb-h1>
-      <text class="cream pads more">{{navigation.getParam("shop")}}</text>
+      <nb-h1 class="cream pads">{{navigation.getParam('clientName')}}</nb-h1>
+      <text class="cream pads more">{{navigation.getParam("budget")}}</text>
     </View>
-      <Carousel :style="{height: 330}"
-      
-      :loop="true"
-      :data="images"
-      :renderItem="_renderItem"
-      :windowSize="400"
-      :itemWidth="350"
-      :itemHeight="350"
-      :sliderHeight="550"
-      :sliderWidth="400"
-      :inactiveSlideScale="0.5"
-      :inactiveSlideOpacity="0.3"
-    />
-  
-
+     
   </nb-container>
 </template>
 
@@ -50,54 +36,16 @@ import headerIcon from "../../assets/i.png";
 import React from "react";
 
 import { Animated, ScrollView, Image, View, Text } from "react-native";
-import Carousel from "react-native-snap-carousel";
+
 export default {
   data() {
     return {
-      headerIcon: headerIcon,
-      images: [
-        { uri: this.navigation.getParam("picOne") },
-        { uri: this.navigation.getParam("picTwo") },
-        { uri: this.navigation.getParam("picThree") }
-      ]
+      headerIcon: headerIcon
     };
   },
   props: {
     navigation: {
       type: Object
-    }
-  },
-  components: {
-    Carousel
-  },
-  methods: {
-    _renderItem: function({ item, index }) {
-      return (
-        <View
-          style={{
-            shadowOffset: { width: 5, height: 4 },
-            shadowColor: "black",
-            shadowOpacity: 0.7,
-            shadowRadius: 5,
-            elevation: 3,
-            height: 300,
-            marginTop: 275
-          }}
-        >
-          <Image
-            source={{ uri: item.uri }}
-            style={{
-              marginLeft: 21,
-              width: 280,
-              height: 280,
-              borderRadius: 5
-            }}
-          />
-        </View>
-      );
-    },
-    c: function() {
-      this._carousel = c;
     }
   }
 };

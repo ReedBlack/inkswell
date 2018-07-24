@@ -19,16 +19,28 @@
      </nb-header>
         
           
-    <Image :style="{flex:1, width: 400, height: 775}" :source="{uri: clients.client_image_link}" class="imageContainer" />
+    <Image :style="{flex:1, width: 400, height: 775}" :source="{uri: artists.artist_image_link}" class="imageContainer" />
     <View class="shade">
-      <nb-h1 class="cream pads">{{clients.client_name}}</nb-h1>
-      <text class="cream pads more">budget: {{clients.budget}}</text>
+      <nb-h1 class="cream pads">{{artists.artist_name}}</nb-h1>
+      <text class="cream pads more">{{artists.shop}}</text>
     </View>
     <View class="description">
-       <nb-h2 class="cream">{{clients.client_name}}'s idea:</nb-h2>
-       <Text class="cream" :style="{fontSize: 17}">{{clients.description}}</Text>
+       
     </View>
- 
+
+         <Carousel 
+      
+      :loop="true"
+       :data="artistCarousel"
+      :renderItem="_renderItem"
+      :windowSize="400"
+      :itemWidth="350"
+      :itemHeight="350"
+      :sliderHeight="550"
+      :sliderWidth="400"
+      :inactiveSlideScale="0.5"
+      :inactiveSlideOpacity="0.3"
+    />
   </nb-container>
 </template>
 
@@ -39,10 +51,20 @@ import store from "../../store";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
 export default {
+  components: {
+    Carousel
+  },
   data() {
     return {
       headerIcon: headerIcon,
-      clients: {}
+      artists: {},
+      artistCarousel: [],
+      // images: [
+      //   { uri: this.artists.pic_one },
+      //   { uri: this.artists.pic_two },
+      //   { uri: this.artists.pic_two }
+      // ],
+      currentArtist: 1
     };
   },
   props: {
@@ -51,8 +73,49 @@ export default {
     }
   },
   mounted: async function() {
-    await store.dispatch("getClientUsers");
-    this.clients = store.state.clients.clients[4];
+    await store.dispatch("getArtistUsers");
+    this.artists = store.state.artists.artists[this.currentArtist];
+    this.artistCarousel.push(this.artists);
+    console.log(this.artistCarousel);
+  },
+  methods: {
+    _renderItem: async function(item) {
+      return (
+        <View
+          style={{
+            shadowOffset: { width: 5, height: 4 },
+            shadowColor: "black",
+            shadowOpacity: 0.7,
+            shadowRadius: 5,
+            elevation: 3
+          }}
+        >
+          <Image
+            source={{ uri: artists.pic_one }}
+            style={{
+              marginTop: 275,
+              marginLeft: 21,
+              width: 280,
+              height: 280,
+              borderRadius: 5
+            }}
+          />
+          <Image
+            source={{ uri: artists.pic_two }}
+            style={{
+              marginTop: 275,
+              marginLeft: 21,
+              width: 280,
+              height: 280,
+              borderRadius: 5
+            }}
+          />
+        </View>
+      );
+    },
+    c: function() {
+      this._carousel = c;
+    }
   }
 };
 </script>

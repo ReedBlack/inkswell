@@ -19,8 +19,8 @@
         </nb-header>
         <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
       
-            <Swiper class="contain" v-if="artists"
-                :cards="artists"
+            <Swiper class="contain" v-if="clients"
+                :cards="clients"
                 :renderCard="_renderItem"
                 :showSecondCard="true"
                 :stackSize="3"
@@ -59,24 +59,24 @@ export default {
     return {
       headerIcon: headerIcon,
       launchScreenBg: launchScreenBg,
-      artists: null,
+      clients: null,
       cardIndex: 0
     };
   },
   beforeMount: async function() {
-    await store.dispatch("getArtistUsers");
-    this.artists = store.state.artists.artists;
+    await store.dispatch("getClientUsers");
+    this.clients = store.state.clients.clients;
   },
   methods: {
     onTapCard: async function(i) {
       await this.navigation.navigate("PreviewProfile", {
-        artistImageLink: this.artists[i].artist_image_link,
-        picOne: this.artists[i].pic_one,
+        clientImageLink: this.clients[i].client_image_link,
+        picOne: this.clients[i].pic_one,
 
-        picTwo: this.artists[i].pic_two,
-        picThree: this.artists[i].pic_three,
-        shop: this.artists[i].shop,
-        artistName: this.artists[i].artist_name
+        picTwo: this.clients[i].pic_two,
+        picThree: this.clients[i].pic_three,
+        shop: this.clients[i].shop,
+        clientName: this.clients[i].client_name
       });
     },
     _renderItem: function(item, index) {
@@ -86,8 +86,8 @@ export default {
             style={{
               backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
-              height: 455,
-              marginTop: 80,
+              height: 525,
+              marginTop: 60,
               marginLeft: -3,
               borderRadius: 5
             }}
@@ -107,7 +107,7 @@ export default {
                   fontSize: 30
                 }}
               >
-                {item.artist_name}
+                {item.client_name}
               </Text>
             </View>
             <Text
@@ -122,12 +122,11 @@ export default {
               {item.shop}
             </Text>
             <Image
-              source={{ uri: item.pic_two }}
+              source={{ uri: item.client_image_link }}
               style={{
-                marginTop: 10,
-                marginLeft: 20,
-                width: 300,
-                height: 300,
+                marginLeft: 10,
+                width: 320,
+                height: 425,
                 borderRadius: 4
               }}
             />

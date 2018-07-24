@@ -24,37 +24,32 @@
         </nb-header>
         <Image :source="chatImage" resizeMode="cover" class="imageContainerChat" />
          <View :style="{ height: 80}">
-          <nb-left class="client thumb" :style="{alignSelf: 'flex-start', width:100}">
-             <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" :style="{
-            shadowOffset: { width: 5, height: 5 },
-            shadowColor: 'black',
-            shadowOpacity: 0.7,
-            shadowRadius: 5,
-          }" />
+          <nb-left class="artist thumb" :style="{alignSelf: 'flex-start', width:100}">
+             <nb-thumbnail large :source="{uri: navigation.getParam('artistImageLink')}"  />
           </nb-left>
-          <nb-right class="artist thumb" :style="{alignSelf: 'flex-end', width:100}">
-             <nb-thumbnail large :source="{uri: navigation.getParam('artistImageLink')}" />
+          <nb-right class="client thumb" :style="{alignSelf: 'flex-end', width:100}">
+             <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" />
           </nb-right>
         </View>
         <nb-content :style="{height:400}" >
           <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index"
           >
-            <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">           
-                <nb-text class="clienttext" >
-                {{comment.chatClient}}
-                </nb-text>        
-            </nb-left>
-            <nb-right class="artistComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatArtist">        
+            <nb-left class="artistComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatArtist">        
                 <nb-text class="artisttext">
                 {{comment.chatArtist}}
                 </nb-text>
-            </nb-right>    
+            </nb-left>    
+            <nb-right class="clientComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatClient">           
+                <nb-text class="clienttext" >
+                {{comment.chatClient}}
+                </nb-text>        
+            </nb-right>
         </scroll-view> 
         </nb-content>
             <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-425}">
               
                 <nb-item left :style="{alignSelf: 'flex-start', width:280, backgroundColor: 'silver'}">
-                  <TextInput class="inputBg" :editable="true" :multiline="true" :style="{color:'black', height: 45, fontSize: 20}" v-model="comment.chat_client" type="text" placeholder="  message" />
+                  <TextInput class="inputBg" :editable="true" :multiline="true" :style="{color:'black', height: 45, fontSize: 20}" v-model="comment.chat_artist" type="text" placeholder="  message" />
                 </nb-item>
             
               <nb-button dark id="bringUp" :onPress="submitComment" :style="{marginLeft: 6, alignSelf: 'flex-start'}">
@@ -94,8 +89,8 @@ export default {
       timer: "",
       comment: {
         match_id: 2,
-        chat_client: "",
-        chat_artist: null
+        chat_client: null,
+        chat_artist: ""
       }
     };
   },
@@ -103,8 +98,8 @@ export default {
     this.timer = setInterval(() => this.getComments(), 900);
   },
   methods: {
-    ref: function(){
-      this.scrollView = ref
+    ref: function() {
+      this.scrollView = ref;
     },
     getComments: async function() {
       fetch(this.CHAT_API_URL2)
@@ -122,8 +117,8 @@ export default {
       this.postComment(this.comment);
       this.comment = {
         match_id: 2,
-        chat_client: "",
-        chat_artist: null
+        chat_client: null,
+        chat_artist: ""
       };
     },
     postComment() {
@@ -133,24 +128,23 @@ export default {
         body: JSON.stringify(this.comment)
       }).then(response => response.json());
       this.comment.match_id = 2;
-      this.comment.chat_client = "";
-      this.comment.chat_artist = null;
+      this.comment.chat_client = null;
+      this.comment.chat_artist = "";
     },
     leaveChat: function() {
       clearInterval(this.timer);
       this.navigation.navigate("Matches");
     }
-    
   }
 };
 </script>
 
 <style>
-.clienttext {
+.artisttext {
   color: #fffede;
   font-size: 19;
 }
-.artisttext {
+.clienttext {
   font-size: 19;
   color: #202020;
 }
@@ -161,18 +155,18 @@ export default {
 .thumb {
   margin-bottom: 65;
 }
-.artist {
+.client {
   margin-top: -87;
   margin-right: 15;
 }
-.client {
+.artist {
   margin-top: -8;
   margin-left: 15;
 }
 .gray {
   background-color: #202020;
 }
-.clientComment {
+.artistComment {
   padding: 9;
   margin: 3;
   margin-left: 7;
@@ -182,7 +176,7 @@ export default {
   border-radius: 11;
   background-color: #202020;
 }
-.artistComment {
+.clientComment {
   padding: 9;
   margin: 3;
   margin-right: 7;
