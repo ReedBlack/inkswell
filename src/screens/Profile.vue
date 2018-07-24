@@ -96,10 +96,10 @@ export default {
           <Image
             source={{ uri: item.uri }}
             style={{
-              marginTop: 335,
-              marginLeft: 12,
-              width: 300,
-              height: 300,
+              marginTop: 275,
+              marginLeft: 21,
+              width: 280,
+              height: 280,
               borderRadius: 5
             }}
           />

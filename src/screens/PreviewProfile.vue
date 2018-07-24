@@ -81,15 +81,15 @@ export default {
             shadowRadius: 5,
             elevation: 3,
             height: 300,
-            marginTop: 325
+            marginTop: 275
           }}
         >
           <Image
             source={{ uri: item.uri }}
             style={{
-              marginLeft: 12,
-              width: 300,
-              height: 300,
+              marginLeft: 21,
+              width: 280,
+              height: 280,
               borderRadius: 5
             }}
           />

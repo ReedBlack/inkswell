@@ -3,9 +3,9 @@
    
     
     <Image :source="launchScreenLogo" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
-    <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1, marginTop:250}" />
-    <nb-text :style="{marginTop: -75, marginLeft: 71}" class="text-color-white">Linking tattoo artists and clients</nb-text>
-      <nb-content class="margins" padder :style="{marginTop: 100}" >
+    <Image :source="launchScreenBg"  class="imageContainer" :style="{flex: 1, marginTop:250}" />
+    <Image left :source="phrase" resizeMode="center" :style="{marginTop: -120, marginLeft:-178}" />
+      <nb-content class="margins" padder :style="{marginTop: 140}" >
             <nb-form>
                 <nb-item fixedLabel>
                     <nb-label class="text-color-white light">Username</nb-label>
@@ -36,7 +36,9 @@
 <script>
 import { Dimensions, Platform } from "react-native";
 import launchScreenLogo from "../../../assets/logoLarge.png";
-import launchScreenBg from "../../../assets/tattoolittle.jpg";
+import launchScreenBg from "../../../assets/tatted.jpg";
+import phrase from "../../../assets/phrase.png";
+import { Font } from "expo";
 
 export default {
   props: {
@@ -47,6 +49,7 @@ export default {
   data: function() {
     return {
       launchScreenBg: launchScreenBg,
+      phrase: phrase,
       launchScreenLogo: launchScreenLogo,
       stylesObj: {
         logoContainerStyle: {

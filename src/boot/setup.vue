@@ -10,7 +10,7 @@
 import Vue from "vue-native-core";
 import { StackNavigator } from "vue-native-router";
 import { VueNativeBase } from "native-base";
-import { AppLoading } from "expo";
+import { AppLoading, Font } from "expo";
 import { store } from "../../store";
 
 import App from "../App.vue";
@@ -34,8 +34,8 @@ export default {
       try {
         this.isAppReady = false;
         await Expo.Font.loadAsync({
-          Roboto: require("native-base/Fonts/Roboto.ttf"),
-          Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+          Forum: require("../../assets/fonts/Forum-Regular.ttf"),
+          Open_Sans: require("../../assets/fonts/OpenSans-Light.ttf"),
           Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
         });
         this.isAppReady = true;
