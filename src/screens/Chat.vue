@@ -9,7 +9,7 @@
           <nb-left>
             <nb-button
               transparent
-              :onPress="() => this.props.navigation.navigate('Matches')"
+              :onPress="leaveChat"
             >
               <nb-icon class="cream" name="arrow-back" />
             </nb-button>
@@ -98,7 +98,7 @@ export default {
     };
   },
   mounted: async function() {
-    this.timer = setInterval(() => this.getComments(), 1500);
+    this.timer = setInterval(() => this.getComments(), 900);
   },
   methods: {
     getComments: async function() {
@@ -131,12 +131,16 @@ export default {
       this.comment.chat_client = "";
       this.comment.chat_artist = null;
       console.log("im working");
+    },
+    leaveChat: function() {
+      clearInterval(this.timer);
+      this.navigation.navigate("Matches");
     }
-  },
-  componentWillUnmount: function() {
-    console.log("hitting destroy function");
-    clearInterval(this.timer);
   }
+  // componentWillUnmount: function() {
+  //   console.log("hitting destroy function");
+  //   clearInterval(this.timer);
+  // }
 };
 </script>
 
