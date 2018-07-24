@@ -19,20 +19,21 @@
      </nb-header>
         
           
-    <Image :style="{flex:1, width: 400, height: 775}" :source="{uri: artists.artist_image_link}" class="imageContainer" />
+     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artist_image_link')}" class="imageContainer" />
     <View class="shade">
       <nb-h1 class="cream pads">{{artists.artist_name}}</nb-h1>
       <text class="cream pads more">{{artists.shop}}</text>
-    </View>
-    <View class="description">
-       
+    
     </View>
 
-         <Carousel 
+       
+
+      <Carousel :style="{height: 330}" v-if="picArr"
       
       :loop="true"
-       :data="artistCarousel"
+      :data="picArr"
       :renderItem="_renderItem"
+      
       :windowSize="400"
       :itemWidth="350"
       :itemHeight="350"
@@ -41,6 +42,7 @@
       :inactiveSlideScale="0.5"
       :inactiveSlideOpacity="0.3"
     />
+
   </nb-container>
 </template>
 
@@ -51,21 +53,16 @@ import store from "../../store";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
 export default {
-  components: {
-    Carousel
-  },
   data() {
     return {
       headerIcon: headerIcon,
       artists: {},
-      artistCarousel: [],
-      // images: [
-      //   { uri: this.artists.pic_one },
-      //   { uri: this.artists.pic_two },
-      //   { uri: this.artists.pic_two }
-      // ],
-      currentArtist: 1
+      currentArtist: 3,
+      picArr: []
     };
+  },
+  components: {
+    Carousel
   },
   props: {
     navigation: {
@@ -74,12 +71,17 @@ export default {
   },
   mounted: async function() {
     await store.dispatch("getArtistUsers");
-    this.artists = store.state.artists.artists[this.currentArtist];
-    this.artistCarousel.push(this.artists);
-    console.log(this.artistCarousel);
+    this.artists = store.state.artists.artists[this.currentArtist]
+    this.picArr = await [
+    {uri: store.state.artists.artists[this.currentArtist].pic_one}, 
+    {uri:store.state.artists.artists[this.currentArtist].pic_two}, 
+    {uri:store.state.artists.artists[this.currentArtist].pic_three}
+    ]
+    console.log(this.picArr)
+    
   },
   methods: {
-    _renderItem: async function(item) {
+     _renderItem: function({ item, index }) {
       return (
         <View
           style={{
@@ -87,23 +89,15 @@ export default {
             shadowColor: "black",
             shadowOpacity: 0.7,
             shadowRadius: 5,
-            elevation: 3
+            elevation: 3,
+            height: 300,
+            marginTop: 275
+        
           }}
         >
           <Image
-            source={{ uri: artists.pic_one }}
+            source={{ uri: item.uri }}
             style={{
-              marginTop: 275,
-              marginLeft: 21,
-              width: 280,
-              height: 280,
-              borderRadius: 5
-            }}
-          />
-          <Image
-            source={{ uri: artists.pic_two }}
-            style={{
-              marginTop: 275,
               marginLeft: 21,
               width: 280,
               height: 280,
