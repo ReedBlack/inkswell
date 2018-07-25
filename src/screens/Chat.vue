@@ -103,8 +103,8 @@ export default {
     this.timer = setInterval(() => this.getComments(), 900);
   },
   methods: {
-    ref: function(){
-      this.scrollView = ref
+    ref: function() {
+      this.scrollView = ref;
     },
     getComments: async function() {
       fetch(this.CHAT_API_URL2)
@@ -140,7 +140,6 @@ export default {
       clearInterval(this.timer);
       this.navigation.navigate("Matches");
     }
-    
   }
 };
 </script>
@@ -152,7 +151,7 @@ export default {
 }
 .artisttext {
   font-size: 19;
-  color: #202020;
+  color: #383838;
 }
 #bringUp {
   z-index: 1000;
@@ -170,7 +169,7 @@ export default {
   margin-left: 15;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
 }
 .clientComment {
   padding: 9;

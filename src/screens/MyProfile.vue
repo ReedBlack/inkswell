@@ -88,7 +88,7 @@ export default {
   color: #fffede;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
   z-index: 10;
 }
 .imageContainer {

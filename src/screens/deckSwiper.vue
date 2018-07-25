@@ -156,7 +156,7 @@ export default {
   margin-top: 60;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
 }
 .cream {
   color: #fffede;

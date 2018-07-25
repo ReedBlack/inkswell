@@ -94,7 +94,7 @@ export default {
 }
 .sidebar-content-wrapper {
   flex: 1;
-  background-color: #202020;
+  background-color: #282828;
 }
 .drawer-cover {
   position: absolute;

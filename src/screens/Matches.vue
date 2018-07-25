@@ -42,7 +42,7 @@
 
 
 <script>
-import { Alert } from 'react-native';
+import { Alert } from "react-native";
 import store from "../../store";
 import headerIcon from "../../assets/i.png";
 import launchScreenBg from "../../assets/wallpaperbg.jpg";
@@ -60,7 +60,6 @@ export default {
     };
   },
   methods: {
-    
     handleListTap: async function(match) {
       this.navigation.navigate("Profile", {
         match: match,
@@ -90,7 +89,7 @@ export default {
 }
 
 .gray {
-  background-color: #202020;
+  background-color: #383838;
 }
 .cream {
   color: #fffede;
