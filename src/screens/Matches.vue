@@ -66,7 +66,8 @@ export default {
         clientImageLink: match.clientImageLink,
         artistImageLink: match.artistImageLink,
         description: match.description,
-
+        placement: match.placement,
+        size: match.size,
         budget: match.budget,
         clientName: match.clientName,
         email: match.client_email
@@ -88,7 +89,7 @@ export default {
 }
 
 .gray {
-  background-color: #202020;
+  background-color: #383838;
 }
 .cream {
   color: #fffede;

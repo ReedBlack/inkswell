@@ -4,7 +4,7 @@
      shadowOffset: {  height: 7 },
             shadowColor: 'black',
             shadowOpacity: .7,
-            shadowRadius: 9, borderWidth:1, borderColor: '#202020'}">
+            shadowRadius: 9, borderWidth:1, borderColor: '#383838'}">
           <nb-left>
             <nb-button
               transparent
@@ -32,20 +32,12 @@
       <nb-h1 class="cream pads">{{navigation.getParam('clientName')}}</nb-h1>
       <text class="cream pads more">{{navigation.getParam("budget")}}</text>
     </View>
-      <Carousel 
-      
-      :loop="true"
-      :data="images"
-      :renderItem="_renderItem"
-      :windowSize="400"
-      :itemWidth="350"
-      :itemHeight="350"
-      :sliderHeight="550"
-      :sliderWidth="400"
-      :inactiveSlideScale="0.5"
-      :inactiveSlideOpacity="0.3"
-    />
-  
+      <View class="description">
+       <nb-h2 class="cream">{{navigation.getParam('clientName')}}'s idea:</nb-h2>
+       <Text note class="cream" :style="{fontSize: 14}">placement: {{navigation.getParam('placement')}}</Text>
+       <Text note class="cream" :style="{fontSize: 14}">size: {{navigation.getParam('size')}}</Text>
+       <Text class="cream" :style="{fontSize: 17}">{{navigation.getParam('description')}}</Text>
+    </View>
 
   </nb-container>
 </template>
@@ -135,12 +127,21 @@ export default {
   color: #fffede;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
   z-index: 10;
 }
 .imageContainer {
   position: absolute;
   z-index: -100;
   margin-top: 60;
+}
+.description {
+  background-color: rgba(34, 34, 34, 0.5);
+  position: absolute;
+  margin-top: 475;
+  margin-left: 90;
+  width: 75%;
+  padding: 4;
+  border-radius: 4;
 }
 </style>

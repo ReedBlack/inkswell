@@ -19,7 +19,7 @@
      </nb-header>
         
           
-     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artist_image_link')}" class="imageContainer" />
+     <Image :style="{width: 400, height: 775}" :source="{uri: artists.artist_image_link}" class="imageContainer" />
     <View class="shade">
       <nb-h1 class="cream pads">{{artists.artist_name}}</nb-h1>
       <text class="cream pads more">{{artists.shop}}</text>
@@ -28,7 +28,7 @@
 
        
 
-      <Carousel :style="{height: 330}" v-if="picArr"
+      <Carousel :style="{height: 330}" 
       
       :loop="true"
       :data="picArr"
@@ -145,7 +145,7 @@ export default {
   color: #fffede;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
   z-index: 10;
 }
 .imageContainer {

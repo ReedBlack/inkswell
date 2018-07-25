@@ -31,7 +31,7 @@
              <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" />
           </nb-right>
         </View>
-        <nb-content :style="{height:400}" >
+        <nb-content :style="{height:400}" >git 
           <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index"
           >
             <nb-left class="artistComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatArtist">        
@@ -146,7 +146,7 @@ export default {
 }
 .clienttext {
   font-size: 19;
-  color: #202020;
+  color: #383838;
 }
 #bringUp {
   z-index: 1000;
@@ -164,7 +164,7 @@ export default {
   margin-left: 15;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
 }
 .artistComment {
   padding: 9;
@@ -174,14 +174,14 @@ export default {
   border-color: silver;
   border-width: 1;
   border-radius: 11;
-  background-color: #202020;
+  background-color: #383838;
 }
 .clientComment {
   padding: 9;
   margin: 3;
   margin-right: 7;
   max-width: 70%;
-  border-color: #202020;
+  border-color: #383838;
   border-width: 2;
   border-radius: 11;
   background-color: #fffede;

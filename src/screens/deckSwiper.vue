@@ -71,11 +71,10 @@ export default {
     onTapCard: async function(i) {
       await this.navigation.navigate("PreviewProfile", {
         clientImageLink: this.clients[i].client_image_link,
-        picOne: this.clients[i].pic_one,
-
-        picTwo: this.clients[i].pic_two,
-        picThree: this.clients[i].pic_three,
-        shop: this.clients[i].shop,
+        description: this.clients[i].description,
+        placement: this.clients[i].placement,
+        size: this.clients[i].size,
+        budget: this.clients[i].budget,
         clientName: this.clients[i].client_name
       });
     },
@@ -87,7 +86,7 @@ export default {
               backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
               height: 525,
-              marginTop: 60,
+              marginTop: 50,
               marginLeft: -3,
               borderRadius: 5
             }}
@@ -118,18 +117,23 @@ export default {
                 color: "#fffede",
                 fontSize: 19
               }}
-            >
-              {item.shop}
+            >budget: {item.budget}
             </Text>
             <Image
               source={{ uri: item.client_image_link }}
               style={{
                 marginLeft: 10,
+                marginTop: 80,
                 width: 320,
                 height: 425,
-                borderRadius: 4
+                borderRadius: 4,
+                position: 'absolute'
               }}
             />
+            <ScrollView style={{width: '86%', height: 60, backgroundColor: 'rgba(34, 34, 34, 0.7)', marginLeft: 20, marginBottom:20, marginTop:250, borderRadius: 6, padding: 8}}>
+              <Text style={{fontSize: 21, color: "#fffede" }}>{item.client_name}'s idea:</Text>
+              <Text style={{fontSize: 19, color: "#fffede" }}>{item.description}</Text>
+           </ScrollView>
           </View>
         </View>
       );
@@ -155,9 +159,18 @@ export default {
   margin-top: 60;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
 }
 .cream {
   color: #fffede;
+}
+.description {
+  background-color: rgba(34, 34, 34, 0.5);
+  position: absolute;
+  margin-top: 475;
+  margin-left: 90;
+  width: 75%;
+  padding: 4;
+  border-radius: 4;
 }
 </style>

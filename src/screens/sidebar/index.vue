@@ -67,12 +67,6 @@ export default {
           icon: "information-circle",
           bg: "#2f2f4f"
         }
-        // {
-        //   name: "Edit Profile",
-        //   route: "MyProfile",
-        //   icon: "information-circle",
-        //   bg: "#2f2f4f"
-        // }
       ]
     };
   },
@@ -94,7 +88,7 @@ export default {
 }
 .sidebar-content-wrapper {
   flex: 1;
-  background-color: #202020;
+  background-color: #282828;
 }
 .drawer-cover {
   position: absolute;

@@ -25,9 +25,14 @@
     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('clientImageLink')}" class="imageContainer" />
     <View class="shade">
       <nb-h1 class="cream pads">{{navigation.getParam('clientName')}}</nb-h1>
-      <text class="cream pads more">{{navigation.getParam("budget")}}</text>
+      <text class="cream pads more">budget: {{navigation.getParam("budget")}}</text>
     </View>
-     
+     <View class="description">
+       <nb-h2 class="cream">{{navigation.getParam('clientName')}}'s idea:</nb-h2>
+       <Text note class="cream" :style="{fontSize: 14}">placement: {{navigation.getParam('placement')}}</Text>
+       <Text note class="cream" :style="{fontSize: 14}">size: {{navigation.getParam('size')}}</Text>
+       <Text class="cream" :style="{fontSize: 17}">{{navigation.getParam('description')}}</Text>
+    </View>
   </nb-container>
 </template>
 
@@ -73,12 +78,21 @@ export default {
   color: #fffede;
 }
 .gray {
-  background-color: #202020;
+  background-color: #383838;
   z-index: 10;
 }
 .imageContainer {
   margin-top: 60;
   position: absolute;
   z-index: -100;
+}
+.description {
+  background-color: rgba(34, 34, 34, 0.5);
+  position: absolute;
+  margin-top: 475;
+  margin-left: 90;
+  width: 75%;
+  padding: 4;
+  border-radius: 4;
 }
 </style>
