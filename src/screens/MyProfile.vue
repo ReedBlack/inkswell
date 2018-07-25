@@ -52,7 +52,7 @@ export default {
   },
   mounted: async function() {
     await store.dispatch("getClientUsers");
-    this.clients = store.state.clients.clients[4];
+    this.clients = store.state.clients.clients[3];
   }
 };
 </script>
