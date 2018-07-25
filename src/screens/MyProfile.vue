@@ -57,7 +57,7 @@ export default {
     return {
       headerIcon: headerIcon,
       artists: {},
-      currentArtist: 3,
+      currentArtist: 6,
       picArr: []
     };
   },
@@ -71,17 +71,16 @@ export default {
   },
   mounted: async function() {
     await store.dispatch("getArtistUsers");
-    this.artists = store.state.artists.artists[this.currentArtist]
+    this.artists = store.state.artists.artists[this.currentArtist];
     this.picArr = await [
-    {uri: store.state.artists.artists[this.currentArtist].pic_one}, 
-    {uri:store.state.artists.artists[this.currentArtist].pic_two}, 
-    {uri:store.state.artists.artists[this.currentArtist].pic_three}
-    ]
-    console.log(this.picArr)
-    
+      { uri: store.state.artists.artists[this.currentArtist].pic_one },
+      { uri: store.state.artists.artists[this.currentArtist].pic_two },
+      { uri: store.state.artists.artists[this.currentArtist].pic_three }
+    ];
+    console.log(this.picArr);
   },
   methods: {
-     _renderItem: function({ item, index }) {
+    _renderItem: function({ item, index }) {
       return (
         <View
           style={{
@@ -92,7 +91,6 @@ export default {
             elevation: 3,
             height: 300,
             marginTop: 275
-        
           }}
         >
           <Image
