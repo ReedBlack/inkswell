@@ -14,7 +14,6 @@
           </nb-body>
           <nb-right />
         </nb-header>
-
        <nb-content padder>
             <nb-form>
                 <nb-item regular>
@@ -31,9 +30,8 @@
                 </nb-item>
                 <nb-item regular>
                     <nb-input placeholder="Link" />
-                </nb-item>
-               
-           <nb-button light :style="{marginBottom: 20}">
+                </nb-item>            
+            <nb-button light :style="{marginBottom: 20}">
                 <nb-text>Submit</nb-text>
             </nb-button>
             </nb-form>

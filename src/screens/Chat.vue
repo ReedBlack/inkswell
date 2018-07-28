@@ -1,69 +1,60 @@
 <template>
-<nb-container :style="{ backgroundColor: '#fff' }">
-        <KeyboardAwareScrollView
+  <nb-container :style="{ backgroundColor: '#fff' }">
+    <KeyboardAwareScrollView
       :resetScrollToCoords="{ x: 0, y: 0 }"
       :scrollEnabled="false"
     >
     <nb-header class="gray" :style="{height: 60, 
-            shadowOffset: {  height: 8 },
-            shadowColor: 'black',
-            shadowOpacity: .8,
-            shadowRadius: 10}">
-          <nb-left>
-            <nb-button
-              transparent
-              :onPress="leaveChat"
-            >
-              <nb-icon class="cream" name="arrow-back" />
-            </nb-button>
-          </nb-left>
-          <nb-body>
-            <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
-          </nb-body>
-          <nb-right />
-        </nb-header>
-        <Image :source="chatImage" resizeMode="cover" class="imageContainerChat" />
-         <View :style="{ height: 80}">
-          <nb-left class="client thumb" :style="{alignSelf: 'flex-start', width:100}">
-             <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" :style="{
-            shadowOffset: { width: 5, height: 5 },
-            shadowColor: 'black',
-            shadowOpacity: 0.7,
-            shadowRadius: 5,
-          }" />
-          </nb-left>
-          <nb-right class="artist thumb" :style="{alignSelf: 'flex-end', width:100}">
-             <nb-thumbnail large :source="{uri: navigation.getParam('artistImageLink')}" />
-          </nb-right>
-        </View>
-        <nb-content :style="{height:400}" >
-          <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index"
-          >
-            <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">           
-                <nb-text class="clienttext" >
-                {{comment.chatClient}}
-                </nb-text>        
-            </nb-left>
-            <nb-right class="artistComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatArtist">        
-                <nb-text class="artisttext">
-                {{comment.chatArtist}}
-                </nb-text>
-            </nb-right>    
-        </scroll-view> 
-        </nb-content>
-            <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-425}">
-              
-                <nb-item left :style="{alignSelf: 'flex-start', width:280, backgroundColor: 'silver'}">
-                  <TextInput class="inputBg" :editable="true" :multiline="true" :style="{color:'black', height: 45, fontSize: 20}" v-model="comment.chat_client" type="text" placeholder="  message" />
-                </nb-item>
-            
-              <nb-button dark id="bringUp" :onPress="submitComment" :style="{marginLeft: 6, alignSelf: 'flex-start'}">
-                <nb-text>send</nb-text>
-              </nb-button>
-            </nb-form>
-            </KeyboardAwareScrollView>
-
-    </nb-container>
+        shadowOffset: {  height: 8 },
+        shadowColor: 'black',
+        shadowOpacity: .8,
+        shadowRadius: 10}">
+      <nb-left>
+        <nb-button
+          transparent
+          :onPress="leaveChat"
+        >
+          <nb-icon class="cream" name="arrow-back" />
+        </nb-button>
+      </nb-left>
+      <nb-body>
+        <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
+      </nb-body>
+      <nb-right />
+    </nb-header>
+    <Image :source="chatImage" resizeMode="cover" class="imageContainerChat" />
+    <View :style="{ height: 80}">
+      <nb-left class="client thumb" :style="{alignSelf: 'flex-start', width:100}">
+        <nb-thumbnail large :source="{uri: navigation.getParam('clientImageLink')}" />
+      </nb-left>
+      <nb-right class="artist thumb" :style="{alignSelf: 'flex-end', width:100}">
+        <nb-thumbnail large :source="{uri: navigation.getParam('artistImageLink')}" />
+      </nb-right>
+    </View>
+    <nb-content :style="{height:400}" >
+      <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
+        <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">           
+          <nb-text class="clienttext" >
+          {{comment.chatClient}}
+          </nb-text>        
+        </nb-left>
+        <nb-right class="artistComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatArtist">        
+          <nb-text class="artisttext">
+          {{comment.chatArtist}}
+          </nb-text>
+        </nb-right>    
+      </scroll-view> 
+      </nb-content>
+      <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-425}">
+          <nb-item left :style="{alignSelf: 'flex-start', width:280, backgroundColor: 'silver'}">
+            <TextInput class="inputBg" :editable="true" :multiline="true" :style="{color:'black', height: 45, fontSize: 20}" v-model="comment.chat_client" type="text" placeholder="  message" />
+          </nb-item>
+        <nb-button dark id="bringUp" :onPress="submitComment" :style="{marginLeft: 6, alignSelf: 'flex-start'}">
+          <nb-text>send</nb-text>
+        </nb-button>
+      </nb-form>
+    </KeyboardAwareScrollView>
+  </nb-container>
 </template>
 
 <script>
