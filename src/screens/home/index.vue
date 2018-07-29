@@ -1,36 +1,24 @@
 <template>
   <nb-container class="home">
-   
-    
     <Image :source="launchScreenLogo" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
     <Image :source="launchScreenBg"  class="imageContainer" :style="{flex: 1, marginTop:250}" />
     <Image left :source="phrase" resizeMode="center" :style="{marginTop: -120, marginLeft:-178}" />
       <nb-content class="margins" padder :style="{marginTop: 140}" >
-            <nb-form>
-                <nb-item fixedLabel>
-                    <nb-label class="text-color-white light">Username</nb-label>
-                    <nb-input />
-                </nb-item>
-                <nb-item fixedLabel last>
-                    <nb-label class="text-color-white light">Password</nb-label>
-                    <nb-input secureTextEntry />
-                </nb-item>
-            </nb-form>
-            <nb-button block :style="stylesObj.btnContainer">
-                <nb-text :onPress="showDrawer">Sign In</nb-text>
-            </nb-button>
-          
-       </nb-content>
-       <!-- <view :style="{ marginBottom: 25 }">
-        <nb-button :style="stylesObj.btnContainer">
-          <nb-text id="text-color-navy" :onPress="navigateToSignupScreen">client signup</nb-text>
-        </nb-button>
-        <nb-button :style="stylesObj.btnContainer">
-          <nb-text id="text-color-navy" :onPress="navigateToArtistSignupScreen">artist signup</nb-text>
-        </nb-button>
-      </view> -->
+        <nb-form>
+            <nb-item fixedLabel>
+              <nb-label class="text-color-white light">Username</nb-label>
+              <nb-input />
+            </nb-item>
+            <nb-item fixedLabel last>
+              <nb-label class="text-color-white light">Password</nb-label>
+              <nb-input secureTextEntry />
+            </nb-item>
+        </nb-form>
+        <nb-button block :style="stylesObj.btnContainer">
+            <nb-text :onPress="showDrawer">Sign In</nb-text>
+        </nb-button>      
+      </nb-content>
   </nb-container>
-
 </template>
 
 <script>
