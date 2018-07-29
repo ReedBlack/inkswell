@@ -24,6 +24,6 @@ This project runs off of expo, so be sure to have expo, x-code to view it in the
 
 > Scan QR with phone to see it in your phone with expo, or press 'i' to view it with the iOS simulator
 
-> switch branch to "artist" to see the app in its current state as for logged in artist users.
+> switch branch to "artist" to see the app in its current state for logged-in artist users.
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
