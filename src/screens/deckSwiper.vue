@@ -1,36 +1,33 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-        <nb-header class="gray" :style="{ height: 60, shadowOffset: {  height: 8 },
-            shadowColor: 'black',
-            shadowOpacity: 10,
-            shadowRadius: 10}">
-          <nb-left>
-            <nb-button class="front"
-              transparent
-              :onPress="() => this.props.navigation.navigate('DrawerOpen')"
-            >
-              <nb-icon class="cream" name="arrow-back" />
-            </nb-button>
-          </nb-left>
-          <nb-body>
-            <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
-          </nb-body>
-          <nb-right />
-        </nb-header>
-        <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
-      
-            <Swiper class="contain" v-if="artists"
-                :cards="artists"
-                :renderCard="_renderItem"
-                :showSecondCard="true"
-                :stackSize="3"
-                :verticalSwipe="false"
-                :backgroundColor="null"  
-                :cardIndex="cardIndex"
-                :onTapCard="onTapCard"    
-            />
-     
-     
+    <nb-header class="gray" :style="{ height: 60, shadowOffset: {  height: 8 },
+        shadowColor: 'black',
+        shadowOpacity: 10,
+        shadowRadius: 10}">
+      <nb-left>
+        <nb-button class="front"
+          transparent
+          :onPress="() => this.props.navigation.navigate('DrawerOpen')"
+          >
+          <nb-icon class="cream" name="arrow-back" />
+        </nb-button>
+      </nb-left>
+      <nb-body>
+        <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
+      </nb-body>
+      <nb-right />
+    </nb-header>
+    <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
+      <Swiper class="contain" v-if="artists"
+        :cards="artists"
+        :renderCard="_renderItem"
+        :showSecondCard="true"
+        :stackSize="3"
+        :verticalSwipe="false"
+        :backgroundColor="null"  
+        :cardIndex="cardIndex"
+        :onTapCard="onTapCard"    
+      />     
   </nb-container>
 </template>
 
@@ -42,7 +39,6 @@ import { Animated, Image, View, Text, ScrollView } from "react-native";
 import store from "../../store";
 import API from "../../lib/API";
 import Vuex from "vuex";
-import Carousel from "react-native-snap-carousel";
 import Swiper from "react-native-deck-swiper";
 
 export default {
@@ -52,7 +48,6 @@ export default {
     }
   },
   components: {
-    Carousel,
     Swiper
   },
   data: function() {
@@ -72,7 +67,6 @@ export default {
       await this.navigation.navigate("PreviewProfile", {
         artistImageLink: this.artists[i].artist_image_link,
         picOne: this.artists[i].pic_one,
-
         picTwo: this.artists[i].pic_two,
         picThree: this.artists[i].pic_three,
         shop: this.artists[i].shop,
@@ -134,9 +128,6 @@ export default {
           </View>
         </View>
       );
-    },
-    c: function() {
-      this._carousel = c;
     }
   }
 };

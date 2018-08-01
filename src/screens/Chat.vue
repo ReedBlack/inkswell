@@ -3,7 +3,7 @@
     <KeyboardAwareScrollView
       :resetScrollToCoords="{ x: 0, y: 0 }"
       :scrollEnabled="false"
-    >
+      >
     <nb-header class="gray" :style="{height: 60, 
         shadowOffset: {  height: 8 },
         shadowColor: 'black',
@@ -17,9 +17,9 @@
           <nb-icon class="cream" name="arrow-back" />
         </nb-button>
       </nb-left>
-      <nb-body>
-        <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
-      </nb-body>
+        <nb-body>
+          <Image resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
+        </nb-body>
       <nb-right />
     </nb-header>
     <Image :source="chatImage" resizeMode="cover" class="imageContainerChat" />
@@ -34,7 +34,7 @@
     <nb-content :style="{height:400}" >
       <scroll-view :style="{flex:1, marginTop: 10}" v-for="(comment, index) in chat" :key="index">
         <nb-left class="clientComment" :style="{alignSelf: 'flex-start'}" v-if="comment.chatClient">           
-          <nb-text class="clienttext" >
+          <nb-text class="clienttext">
           {{comment.chatClient}}
           </nb-text>        
         </nb-left>
@@ -46,9 +46,9 @@
       </scroll-view> 
       </nb-content>
       <nb-form left :style="{flex:1, flexDirection: 'row', marginBottom:-425}">
-          <nb-item left :style="{alignSelf: 'flex-start', width:280, backgroundColor: 'silver'}">
-            <TextInput class="inputBg" :editable="true" :multiline="true" :style="{color:'black', height: 45, fontSize: 20}" v-model="comment.chat_client" type="text" placeholder="  message" />
-          </nb-item>
+        <nb-item left :style="{alignSelf: 'flex-start', width:280, backgroundColor: 'silver'}">
+          <TextInput class="inputBg" :editable="true" :multiline="true" :style="{color:'black', height: 45, fontSize: 20}" v-model="comment.chat_client" type="text" placeholder="  message" />
+        </nb-item>
         <nb-button dark id="bringUp" :onPress="submitComment" :style="{marginLeft: 6, alignSelf: 'flex-start'}">
           <nb-text>send</nb-text>
         </nb-button>
@@ -64,7 +64,6 @@ import { ScrollView, TextInput } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import store from "../../store";
 import chatImage from "../../assets/wallpaperbg.jpg";
-import { GiftedChat } from "react-native-gifted-chat";
 
 export default {
   components: {

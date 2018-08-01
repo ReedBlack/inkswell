@@ -3,9 +3,9 @@
     <nb-content class="sidebar-content-wrapper"  :bounces="false">
       <image :source="drawerCover" resizeMode="center" class="drawer-cover" :style="stylesObj.drawerCoverObj"/>
       <image :source="Tatpic1" class="backgroundpic" :style="{shadowOffset: { width:10, height: 8 },
-            shadowColor: 'black',
-            shadowOpacity: .8,
-            shadowRadius: 10}" />
+        shadowColor: 'black',
+        shadowOpacity: .8,
+        shadowRadius: 10}" />
       <nb-list class="list">
         <nb-list-item v-for="data in datas" :key="data.route" button noBorder >
           <touchable-opacity :onPress="() => handleListItemClick(data)">           
@@ -27,6 +27,7 @@ import profile from "../../../assets/profile.png";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
+
 export default {
   props: {
     navigation: {
@@ -43,7 +44,6 @@ export default {
       stylesObj: {
         drawerCoverObj: {
           height: deviceHeight / 3.5,
-
           marginLeft: -70,
           marginTop: 60
         }
@@ -67,12 +67,6 @@ export default {
           icon: "information-circle",
           bg: "#2f2f4f"
         }
-        // {
-        //   name: "Edit Profile",
-        //   route: "MyProfile",
-        //   icon: "information-circle",
-        //   bg: "#2f2f4f"
-        // }
       ]
     };
   },

@@ -1,59 +1,54 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-     <nb-header class="gray" :style="{height: 70,
-     shadowOffset: {  height: 7 },
-            shadowColor: 'black',
-            shadowOpacity: .7,
-            shadowRadius: 9, borderWidth:1, borderColor: '#202020'}">
-          <nb-left>
-            <nb-button
-              transparent
-              :onPress="() => this.props.navigation.navigate('Matches')"
-            >
-              <nb-icon class="cream" name="arrow-back" />
-            </nb-button>
-          </nb-left>
-          <nb-body>
-           <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
-          </nb-body>
-          <nb-right>
-            <nb-button
-              transparent
-              :onPress="() => handleChatTap()"
-            >
-              <nb-text class="cream">discuss</nb-text>
-            </nb-button>
-          </nb-right>
-     </nb-header>
-       
-          
+    <nb-header class="gray" :style="{height: 70,
+      shadowOffset: {  height: 7 },
+      shadowColor: 'black',
+      shadowOpacity: .7,
+      shadowRadius: 9, borderWidth:1, borderColor: '#202020'}">
+      <nb-left>
+        <nb-button
+          transparent
+          :onPress="() => this.props.navigation.navigate('Matches')"
+        >
+          <nb-icon class="cream" name="arrow-back" />
+        </nb-button>
+      </nb-left>
+      <nb-body>
+        <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
+      </nb-body>
+      <nb-right>
+        <nb-button
+          transparent
+          :onPress="() => handleChatTap()"
+        >
+          <nb-text class="cream">discuss</nb-text>
+        </nb-button>
+      </nb-right>
+    </nb-header>    
     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
     <View class="shade">
       <nb-h1 class="cream pads">{{navigation.getParam('artistName')}}</nb-h1>
       <text class="cream pads more">{{navigation.getParam("shop")}}</text>
     </View>
-      <Carousel 
-      
-      :loop="true"
-      :data="images"
-      :renderItem="_renderItem"
-      :windowSize="400"
-      :itemWidth="350"
-      :itemHeight="350"
-      :sliderHeight="550"
-      :sliderWidth="400"
-      :inactiveSlideScale="0.5"
-      :inactiveSlideOpacity="0.3"
+    <Carousel 
+    
+    :loop="true"
+    :data="images"
+    :renderItem="_renderItem"
+    :windowSize="400"
+    :itemWidth="350"
+    :itemHeight="350"
+    :sliderHeight="550"
+    :sliderWidth="400"
+    :inactiveSlideScale="0.5"
+    :inactiveSlideOpacity="0.3"
     />
-  
-
   </nb-container>
 </template>
 
 <script>
 import headerIcon from "../../assets/i.png";
 import React from "react";
-
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
 export default {

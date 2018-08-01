@@ -1,24 +1,22 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
-     <nb-header class="gray" :style="{height: 70, shadowOffset: {  height: 8 },
-            shadowColor: 'black',
-            shadowOpacity: .8,
-            shadowRadius: 10}">
-        <nb-left>
-          <nb-button
-            transparent
-            :onPress="() => this.props.navigation.navigate('DrawerOpen')"
-          >
-            <nb-icon class="cream" name="arrow-back" />
-          </nb-button>
-        </nb-left>
-        <nb-body>
-            <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
-        </nb-body>
-        <nb-right />
-     </nb-header>
-        
-          
+    <nb-header class="gray" :style="{height: 70, shadowOffset: {  height: 8 },
+          shadowColor: 'black',
+          shadowOpacity: .8,
+          shadowRadius: 10}">
+      <nb-left>
+        <nb-button
+          transparent
+          :onPress="() => this.props.navigation.navigate('DrawerOpen')"
+        >
+          <nb-icon class="cream" name="arrow-back" />
+        </nb-button>
+      </nb-left>
+      <nb-body>
+        <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
+      </nb-body>
+      <nb-right />
+    </nb-header>    
     <Image :style="{flex:1, width: 400, height: 775}" :source="{uri: clients.client_image_link}" class="imageContainer" />
     <View class="shade">
       <nb-h1 class="cream pads">{{clients.client_name}}</nb-h1>
@@ -28,7 +26,6 @@
        <nb-h2 class="cream">{{clients.client_name}}'s idea:</nb-h2>
        <Text class="cream" :style="{fontSize: 17}">{{clients.description}}</Text>
     </View>
- 
   </nb-container>
 </template>
 

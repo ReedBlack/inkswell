@@ -3,21 +3,21 @@
     <Image :source="launchScreenLogo" resizeMode="contain" :style="{marginLeft: -30, marginTop: 275, height:300}" />
     <Image :source="launchScreenBg"  class="imageContainer" :style="{flex: 1, marginTop:250}" />
     <Image left :source="phrase" resizeMode="center" :style="{marginTop: -120, marginLeft:-178}" />
-      <nb-content class="margins" padder :style="{marginTop: 140}" >
-        <nb-form>
-            <nb-item fixedLabel>
-              <nb-label class="text-color-white light">Username</nb-label>
-              <nb-input />
-            </nb-item>
-            <nb-item fixedLabel last>
-              <nb-label class="text-color-white light">Password</nb-label>
-              <nb-input secureTextEntry />
-            </nb-item>
-        </nb-form>
-        <nb-button block :style="stylesObj.btnContainer">
-            <nb-text :onPress="showDrawer">Sign In</nb-text>
-        </nb-button>      
-      </nb-content>
+    <nb-content class="margins" padder :style="{marginTop: 140}" >
+      <nb-form>
+        <nb-item fixedLabel>
+          <nb-label class="text-color-white light">Username</nb-label>
+          <nb-input />
+        </nb-item>
+        <nb-item fixedLabel last>
+          <nb-label class="text-color-white light">Password</nb-label>
+          <nb-input secureTextEntry />
+        </nb-item>
+      </nb-form>
+      <nb-button block :style="stylesObj.btnContainer">
+        <nb-text :onPress="showDrawer">Sign In</nb-text>
+      </nb-button>      
+    </nb-content>
   </nb-container>
 </template>
 
@@ -70,13 +70,13 @@ export default {
   methods: {
     showDrawer() {
       this.navigation.navigate("DrawerOpen");
-    },
-    navigateToSignupScreen() {
-      this.navigation.navigate("SignupScreen");
-    },
-    navigateToArtistSignupScreen() {
-      this.navigation.navigate("ArtistSignup");
     }
+    // navigateToSignupScreen() {
+    //   this.navigation.navigate("SignupScreen");
+    // },
+    // navigateToArtistSignupScreen() {
+    //   this.navigation.navigate("ArtistSignup");
+    // }
   }
 };
 </script>
@@ -104,15 +104,11 @@ export default {
 }
 .text-container {
   align-items: center;
-
   margin-bottom: 10;
   background-color: transparent;
 }
 .text-color-white {
   color: #fffede;
-}
-#text-color-navy {
-  color: #2f2f4f;
 }
 .button-container {
   background-color: #fffede;
