@@ -29,8 +29,6 @@
                 :cardIndex="cardIndex"
                 :onTapCard="onTapCard"    
             />
-     
-     
   </nb-container>
 </template>
 
@@ -117,7 +115,8 @@ export default {
                 color: "#fffede",
                 fontSize: 19
               }}
-            >budget: {item.budget}
+            >
+              budget: {item.budget}
             </Text>
             <Image
               source={{ uri: item.client_image_link }}
@@ -127,13 +126,28 @@ export default {
                 width: 320,
                 height: 425,
                 borderRadius: 4,
-                position: 'absolute'
+                position: "absolute"
               }}
             />
-            <ScrollView style={{width: '86%', height: 60, backgroundColor: 'rgba(34, 34, 34, 0.7)', marginLeft: 20, marginBottom:20, marginTop:250, borderRadius: 6, padding: 8}}>
-              <Text style={{fontSize: 21, color: "#fffede" }}>{item.client_name}'s idea:</Text>
-              <Text style={{fontSize: 19, color: "#fffede" }}>{item.description}</Text>
-           </ScrollView>
+            <ScrollView
+              style={{
+                width: "86%",
+                height: 60,
+                backgroundColor: "rgba(34, 34, 34, 0.7)",
+                marginLeft: 20,
+                marginBottom: 20,
+                marginTop: 250,
+                borderRadius: 6,
+                padding: 8
+              }}
+            >
+              <Text style={{ fontSize: 21, color: "#fffede" }}>
+                {item.client_name}'s idea:
+              </Text>
+              <Text style={{ fontSize: 19, color: "#fffede" }}>
+                {item.description}
+              </Text>
+            </ScrollView>
           </View>
         </View>
       );
