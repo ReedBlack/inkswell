@@ -18,7 +18,8 @@
       <nb-right />
     </nb-header>
     <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
-      <Swiper class="contain" v-if="artists"
+    <View>
+      <Swiper v-if="artists"
         :cards="artists"
         :renderCard="_renderItem"
         :showSecondCard="true"
@@ -28,6 +29,7 @@
         :cardIndex="cardIndex"
         :onTapCard="onTapCard"    
       />     
+    </View>
   </nb-container>
 </template>
 
@@ -81,7 +83,6 @@ export default {
               backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
               height: 455,
-              marginTop: 80,
               marginLeft: -3,
               borderRadius: 5
             }}
@@ -135,11 +136,7 @@ export default {
 
 <style>
 .front {
-  z-index: 1000;
-}
-.contain {
-  margin-top: 100;
-  height: 90%;
+  z-index: 9999;
 }
 .imageContainer {
   position: absolute;
