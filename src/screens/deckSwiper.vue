@@ -18,8 +18,8 @@
           <nb-right />
         </nb-header>
         <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
-      
-            <Swiper class="contain" v-if="clients"
+          <View class="contain">
+            <Swiper v-if="clients"
                 :cards="clients"
                 :renderCard="_renderItem"
                 :showSecondCard="true"
@@ -29,6 +29,7 @@
                 :cardIndex="cardIndex"
                 :onTapCard="onTapCard"    
             />
+          </View>
   </nb-container>
 </template>
 
@@ -84,7 +85,6 @@ export default {
               backgroundColor: "rgba(169,169,169,.7)",
               width: 345,
               height: 525,
-              marginTop: 50,
               marginLeft: -3,
               borderRadius: 5
             }}
@@ -164,7 +164,6 @@ export default {
   z-index: 1000;
 }
 .contain {
-  margin-top: 100;
   height: 90%;
 }
 .imageContainer {
