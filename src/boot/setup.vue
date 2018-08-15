@@ -5,7 +5,6 @@
   </view>
 </template>
 
-
 <script>
 import Vue from "vue-native-core";
 import { StackNavigator } from "vue-native-router";
@@ -14,7 +13,6 @@ import { AppLoading, Font } from "expo";
 import { store } from "../../store";
 
 import App from "../App.vue";
-
 Vue.prototype.$store = store;
 // registering all native-base components to the global scope of the Vue
 Vue.use(VueNativeBase);

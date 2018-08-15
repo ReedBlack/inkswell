@@ -5,27 +5,26 @@
       shadowColor: 'black',
       shadowOpacity: .7,
       shadowRadius: 9}">
-        <nb-left>
-          <nb-button
-            transparent
-            :onPress="() => this.props.navigation.goBack()"
-          >
-            <nb-icon class="cream" name="arrow-back" />
-          </nb-button>
-        </nb-left>
-        <nb-body>
-          <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
-        </nb-body>
-        <nb-right>
-        </nb-right>
+      <nb-left>
+        <nb-button
+          transparent
+          :onPress="() => this.props.navigation.goBack()"
+        >
+          <nb-icon class="cream" name="arrow-back" />
+        </nb-button>
+      </nb-left>
+      <nb-body>
+        <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
+      </nb-body>
+      <nb-right>
+      </nb-right>
     </nb-header>    
     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
     <View class="shade">
       <nb-h1 class="cream pads">{{navigation.getParam('artistName')}}</nb-h1>
       <text class="cream pads more">{{navigation.getParam("shop")}}</text>
     </View>
-    <Carousel :style="{height: 330}"
-    
+    <Carousel :style="{height: 330}"    
     :loop="true"
     :data="images"
     :renderItem="_renderItem"
@@ -45,6 +44,7 @@ import headerIcon from "../../assets/i.png";
 import React from "react";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
+
 export default {
   data() {
     return {

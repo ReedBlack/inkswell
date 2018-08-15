@@ -1,9 +1,9 @@
 <template>
   <nb-container :style="{ backgroundColor: '#fff' }">
     <nb-header class="gray" :style="{height: 70, shadowOffset: {  height: 8 },
-          shadowColor: 'black',
-          shadowOpacity: .8,
-          shadowRadius: 10}">
+        shadowColor: 'black',
+        shadowOpacity: .8,
+        shadowRadius: 10}">
       <nb-left>
         <nb-button
           transparent
@@ -23,8 +23,8 @@
       <text class="cream pads more">budget: {{clients.budget}}</text>
     </View>
     <View class="description">
-       <nb-h2 class="cream">{{clients.client_name}}'s idea:</nb-h2>
-       <Text class="cream" :style="{fontSize: 17}">{{clients.description}}</Text>
+      <nb-h2 class="cream">{{clients.client_name}}'s idea:</nb-h2>
+      <Text class="cream" :style="{fontSize: 17}">{{clients.description}}</Text>
     </View>
   </nb-container>
 </template>
@@ -35,6 +35,7 @@ import React from "react";
 import store from "../../store";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
+
 export default {
   data() {
     return {

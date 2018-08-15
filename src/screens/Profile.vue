@@ -30,18 +30,17 @@
       <nb-h1 class="cream pads">{{navigation.getParam('artistName')}}</nb-h1>
       <text class="cream pads more">{{navigation.getParam("shop")}}</text>
     </View>
-    <Carousel 
-    
-    :loop="true"
-    :data="images"
-    :renderItem="_renderItem"
-    :windowSize="400"
-    :itemWidth="350"
-    :itemHeight="350"
-    :sliderHeight="550"
-    :sliderWidth="400"
-    :inactiveSlideScale="0.5"
-    :inactiveSlideOpacity="0.3"
+    <Carousel     
+      :loop="true"
+      :data="images"
+      :renderItem="_renderItem"
+      :windowSize="400"
+      :itemWidth="350"
+      :itemHeight="350"
+      :sliderHeight="550"
+      :sliderWidth="400"
+      :inactiveSlideScale="0.5"
+      :inactiveSlideOpacity="0.3"
     />
   </nb-container>
 </template>

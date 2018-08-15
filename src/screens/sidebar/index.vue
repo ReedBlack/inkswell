@@ -20,7 +20,7 @@
 <script>
 import { Dimensions, Platform, TouchableOpacity } from "react-native";
 import drawerCover from "../../../assets/fishLogo.1.png";
-import Tatpic1 from "../../../assets/Arm.png";
+import Tatpic1 from "../../../assets/arm.png";
 import swipe from "../../../assets/swipe.png";
 import matches from "../../../assets/matches.png";
 import profile from "../../../assets/profile.png";
