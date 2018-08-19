@@ -40,7 +40,7 @@
         </nb-left>
         <nb-right class="artistComment" :style="{alignSelf: 'flex-end'}" v-if="comment.chatArtist">        
           <nb-text class="artisttext">
-          {{comment.chatArtist}}
+            {{comment.chatArtist}}
           </nb-text>
         </nb-right>    
       </scroll-view> 
@@ -58,12 +58,12 @@
 </template>
 
 <script>
-import headerIcon from "../../assets/i.png";
-import React from "react";
 import { ScrollView, TextInput } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import store from "../../store";
 import chatImage from "../../assets/wallpaperbg.jpg";
+import headerIcon from "../../assets/i.png";
+import React from "react";
+import store from "../../store";
 
 export default {
   components: {
@@ -140,12 +140,12 @@ export default {
   font-size: 19;
 }
 .artisttext {
-  font-size: 19;
   color: #383838;
+  font-size: 19;
 }
 #bringUp {
-  z-index: 1000;
   background-color: silver;
+  z-index: 1000;
 }
 .thumb {
   margin-bottom: 65;
@@ -162,24 +162,24 @@ export default {
   background-color: #383838;
 }
 .clientComment {
-  padding: 9;
-  margin: 3;
-  margin-left: 7;
-  max-width: 70%;
+  background-color: #202020;
   border-color: silver;
   border-width: 1;
   border-radius: 11;
-  background-color: #202020;
+  margin: 3;
+  margin-left: 7;
+  max-width: 70%;
+  padding: 9;
 }
 .artistComment {
-  padding: 9;
-  margin: 3;
-  margin-right: 7;
-  max-width: 70%;
+  background-color: #fffede;
   border-color: #202020;
   border-width: 2;
   border-radius: 11;
-  background-color: #fffede;
+  margin: 3;
+  margin-right: 7;
+  max-width: 70%;
+  padding: 9;
 }
 .imageContainerChat {
   margin-top: 60;

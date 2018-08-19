@@ -20,10 +20,10 @@
 <script>
 import { Dimensions, Platform, TouchableOpacity } from "react-native";
 import drawerCover from "../../../assets/fishLogo.1.png";
-import Tatpic1 from "../../../assets/arm.png";
-import swipe from "../../../assets/swipe.png";
 import matches from "../../../assets/matches.png";
 import profile from "../../../assets/profile.png";
+import swipe from "../../../assets/swipe.png";
+import Tatpic1 from "../../../assets/arm.png";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -83,19 +83,19 @@ export default {
   margin-left: -111;
   margin-top: -1;
   position: absolute;
-  z-index: -10;
   transform: rotate(56deg);
+  z-index: -10;
 }
 .sidebar-content-wrapper {
-  flex: 1;
   background-color: #282828;
+  flex: 1;
 }
 .drawer-cover {
   position: absolute;
 }
 .list {
-  margin-top: 387;
   margin-left: -52;
+  margin-top: 387;
 }
 .listitem {
   margin: -25;

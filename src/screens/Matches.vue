@@ -43,9 +43,10 @@
 
 <script>
 import { Alert } from "react-native";
-import store from "../../store";
 import headerIcon from "../../assets/i.png";
 import launchScreenBg from "../../assets/wallpaperbg.jpg";
+import store from "../../store";
+
 export default {
   props: {
     navigation: {
@@ -62,7 +63,6 @@ export default {
   methods: {
     handleListTap: async function(match) {
       this.navigation.navigate("Profile", {
-        match: match,
         artistImageLink: match.artistImageLink,
         picOne: match.picOne,
         clientImageLink: match.clientImageLink,
@@ -83,9 +83,9 @@ export default {
 
 <style>
 .imageContainer {
+  margin-top: 69;
   position: absolute;
   z-index: -10;
-  margin-top: 69;
 }
 
 .gray {

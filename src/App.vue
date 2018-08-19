@@ -3,19 +3,19 @@
 </template>
 
 <script>
-import React from "react";
 import { StackNavigator, DrawerNavigator } from "vue-native-router";
 import { Root } from "native-base";
-import HomeScreen from "./screens/home/index.vue";
-import SideBarScreen from "./screens/sidebar/index.vue";
-import DeckSwiperScreen from "./screens/deckSwiper";
-import SignupScreen from "./screens/SignupScreen";
 import ArtistSignup from "./screens/ArtistSignup";
-import MyProfile from "./screens/MyProfile";
-import Profile from "./screens/Profile";
-import PreviewProfile from "./screens/PreviewProfile";
-import Matches from "./screens/Matches";
 import Chat from "./screens/Chat";
+import DeckSwiperScreen from "./screens/deckSwiper";
+import HomeScreen from "./screens/home/index.vue";
+import Matches from "./screens/Matches";
+import MyProfile from "./screens/MyProfile";
+import PreviewProfile from "./screens/PreviewProfile";
+import Profile from "./screens/Profile";
+import React from "react";
+import SideBarScreen from "./screens/sidebar/index.vue";
+import SignupScreen from "./screens/SignupScreen";
 
 const Drawer = DrawerNavigator(
   {

@@ -16,8 +16,7 @@
       <nb-body>
         <Image class="front" resizeMode="center" :style="{marginTop:65}" :source="headerIcon"  />
       </nb-body>
-      <nb-right>
-      </nb-right>
+      <nb-right />
     </nb-header>    
     <Image :style="{width: 400, height: 775}" :source="{uri: navigation.getParam('artistImageLink')}" class="imageContainer" />
     <View class="shade">
@@ -25,25 +24,25 @@
       <text class="cream pads more">{{navigation.getParam("shop")}}</text>
     </View>
     <Carousel :style="{height: 330}"    
-    :loop="true"
-    :data="images"
-    :renderItem="_renderItem"
-    :windowSize="400"
-    :itemWidth="350"
-    :itemHeight="350"
-    :sliderHeight="550"
-    :sliderWidth="400"
-    :inactiveSlideScale="0.5"
-    :inactiveSlideOpacity="0.3"
+      :loop="true"
+      :data="images"
+      :renderItem="_renderItem"
+      :windowSize="400"
+      :itemWidth="350"
+      :itemHeight="350"
+      :sliderHeight="550"
+      :sliderWidth="400"
+      :inactiveSlideScale="0.5"
+      :inactiveSlideOpacity="0.3"
     />
   </nb-container>
 </template>
 
 <script>
-import headerIcon from "../../assets/i.png";
-import React from "react";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
+import headerIcon from "../../assets/i.png";
+import React from "react";
 
 export default {
   data() {
@@ -69,22 +68,22 @@ export default {
       return (
         <View
           style={{
+            elevation: 3,
+            height: 300,
+            marginTop: 275,
             shadowOffset: { width: 5, height: 4 },
             shadowColor: "black",
             shadowOpacity: 0.7,
-            shadowRadius: 5,
-            elevation: 3,
-            height: 300,
-            marginTop: 275
+            shadowRadius: 5
           }}
         >
           <Image
             source={{ uri: item.uri }}
             style={{
-              marginLeft: 21,
-              width: 280,
+              borderRadius: 5,
               height: 280,
-              borderRadius: 5
+              marginLeft: 21,
+              width: 280
             }}
           />
         </View>
@@ -106,10 +105,10 @@ export default {
 }
 .shade {
   background-color: rgba(34, 34, 34, 0.5);
-  transform: rotate(-11deg);
-  position: absolute;
   margin-top: 95;
   margin-left: -10;
+  position: absolute;
+  transform: rotate(-11deg);
   width: 130%;
 }
 .front {

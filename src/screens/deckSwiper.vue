@@ -20,12 +20,12 @@
     <Image :source="launchScreenBg" class="imageContainer" :style="{flex: 1}" />
     <View>
       <Swiper v-if="artists"
+        :backgroundColor="null"  
         :cards="artists"
         :renderCard="_renderItem"
         :showSecondCard="true"
         :stackSize="3"
         :verticalSwipe="false"
-        :backgroundColor="null"  
         :cardIndex="cardIndex"
         :onTapCard="onTapCard"    
       />     
@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import launchScreenBg from "../../assets/wallpaperbg.jpg";
-import headerIcon from "../../assets/i.png";
-import React from "react";
 import { Animated, Image, View, Text, ScrollView } from "react-native";
-import store from "../../store";
 import API from "../../lib/API";
-import Vuex from "vuex";
+import headerIcon from "../../assets/i.png";
+import launchScreenBg from "../../assets/wallpaperbg.jpg";
+import React from "react";
+import store from "../../store";
 import Swiper from "react-native-deck-swiper";
+import Vuex from "vuex";
 
 export default {
   props: {
@@ -81,25 +81,25 @@ export default {
           <View
             style={{
               backgroundColor: "rgba(169,169,169,.7)",
-              width: 345,
+              borderRadius: 5,
               height: 455,
               marginLeft: -3,
-              borderRadius: 5
+              width: 345
             }}
           >
             <View
               style={{
                 backgroundColor: "rgba(169,169,169,.5)",
-                marginLeft: 16,
-                marginTop: 5
+                marginTop: 5,
+                marginLeft: 16
               }}
             >
               <Text
                 style={{
-                  padding: 3,
-                  marginLeft: 5,
                   color: "#fffede",
-                  fontSize: 30
+                  fontSize: 30,
+                  marginLeft: 5,
+                  padding: 3
                 }}
               >
                 {item.artist_name}
@@ -107,11 +107,11 @@ export default {
             </View>
             <Text
               style={{
-                marginTop: 8,
                 alignSelf: "flex-end",
-                marginRight: 5,
                 color: "#fffede",
-                fontSize: 19
+                fontSize: 19,
+                marginTop: 8,
+                marginRight: 5
               }}
             >
               {item.shop}
@@ -119,11 +119,11 @@ export default {
             <Image
               source={{ uri: item.pic_two }}
               style={{
-                marginTop: 10,
-                marginLeft: 20,
-                width: 300,
+                borderRadius: 4,
                 height: 300,
-                borderRadius: 4
+                marginLeft: 20,
+                marginTop: 10,
+                width: 300
               }}
             />
           </View>
@@ -139,9 +139,9 @@ export default {
   z-index: 9999;
 }
 .imageContainer {
+  margin-top: 60;
   position: absolute;
   z-index: -1;
-  margin-top: 60;
 }
 .gray {
   background-color: #383838;

@@ -30,11 +30,11 @@
 </template>
 
 <script>
+import { Animated, ScrollView, Image, View, Text } from "react-native";
+import Carousel from "react-native-snap-carousel";
 import headerIcon from "../../assets/i.png";
 import React from "react";
 import store from "../../store";
-import { Animated, ScrollView, Image, View, Text } from "react-native";
-import Carousel from "react-native-snap-carousel";
 
 export default {
   data() {
@@ -64,20 +64,20 @@ export default {
 }
 .shade {
   background-color: rgba(34, 34, 34, 0.5);
-  transform: rotate(-11deg);
-  position: absolute;
   margin-top: 80;
   margin-left: -40;
+  position: absolute;
+  transform: rotate(-11deg);
   width: 160%;
 }
 .description {
   background-color: rgba(34, 34, 34, 0.5);
-  position: absolute;
+  border-radius: 4;
   margin-top: 475;
   margin-left: 90;
-  width: 75%;
   padding: 4;
-  border-radius: 4;
+  position: absolute;
+  width: 75%;
 }
 .front {
   z-index: 1000;
@@ -90,8 +90,8 @@ export default {
   z-index: 10;
 }
 .imageContainer {
+  margin-top: 50;
   position: absolute;
   z-index: -100;
-  margin-top: 50;
 }
 </style>

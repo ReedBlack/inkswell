@@ -46,10 +46,11 @@
 </template>
 
 <script>
-import headerIcon from "../../assets/i.png";
-import React from "react";
 import { Animated, ScrollView, Image, View, Text } from "react-native";
 import Carousel from "react-native-snap-carousel";
+import headerIcon from "../../assets/i.png";
+import React from "react";
+
 export default {
   data() {
     return {
@@ -80,21 +81,21 @@ export default {
       return (
         <View
           style={{
+            elevation: 3,
             shadowOffset: { width: 5, height: 4 },
             shadowColor: "black",
             shadowOpacity: 0.7,
-            shadowRadius: 5,
-            elevation: 3
+            shadowRadius: 5
           }}
         >
           <Image
             source={{ uri: item.uri }}
             style={{
+              borderRadius: 5,
+              height: 280,
               marginTop: 275,
               marginLeft: 21,
-              width: 280,
-              height: 280,
-              borderRadius: 5
+              width: 280
             }}
           />
         </View>
@@ -116,10 +117,10 @@ export default {
 }
 .shade {
   background-color: rgba(34, 34, 34, 0.5);
-  transform: rotate(-11deg);
-  position: absolute;
   margin-top: 95;
   margin-left: -40;
+  position: absolute;
+  transform: rotate(-11deg);
   width: 160%;
 }
 .front {
@@ -133,8 +134,8 @@ export default {
   z-index: 10;
 }
 .imageContainer {
+  margin-top: 60;
   position: absolute;
   z-index: -100;
-  margin-top: 60;
 }
 </style>
